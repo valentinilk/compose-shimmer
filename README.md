@@ -1,6 +1,8 @@
 # Shimmer for Jetpack Compose
--
+
 A library which offers a shimmering effect for Android's Jetpack Compose.
+
+<img src="https://user-images.githubusercontent.com/1201850/131474443-620d0777-5b42-4914-839d-e6250b083538.gif" width="500" >
 
 It was developed in need for a shimmer effect that traverses across the whole screen, bringing only a certain subset of child views to shine.
 
@@ -39,7 +41,7 @@ Box(
 }
 ```
 
-// TODO Insert sample
+<img src="https://user-images.githubusercontent.com/1201850/131474508-c572076c-d707-4ba1-9e84-729c1dc06f3f.gif" width="128" height="128">
 
 ```
 Box(
@@ -57,7 +59,7 @@ Box(
 }
 ```
 
-// TODO Insert sample
+<img src="https://user-images.githubusercontent.com/1201850/131474532-ce7d37c5-9af6-4577-82c2-737591f8c0c2.gif" width="128" height="128">
 
 ## Theming
 
@@ -77,13 +79,13 @@ The theme offers a few simple configurations like the shimmer's `rotation` or `w
 
 For further information have a look at documentation in data class itself and have a look at the `ThemingSamples` in the sample app.
 
-// TODO Insert sample
+<img src="https://user-images.githubusercontent.com/1201850/131474645-a854a5ed-c390-4695-b4e4-e73224f2240c.gif" width="250" >
 
 ## Advanced Usage
 
 The default `shimmer()` modifier creates a shimmering effect that will traverse over an area that is equal to the view's position and size. While this looks great for most cases, it just doesn't look as satisfiying for cases where the shimmer has to be applied to multiple views:
 
-// TODO Insert all on child samples
+<img src="https://user-images.githubusercontent.com/1201850/131474721-29a57e04-139c-44b6-8721-5fb674706dc8.gif" width="250" >
 
 Due to the differences in sizes, all three shimmers have a different velocitiy, which doesn't look as calm as it should be. Even having in fact three different and independent shimmerings doesn't look as clean as it could.
 
@@ -107,7 +109,7 @@ Column {
 }
 ```
 
-// TODO Insert
+<img src="https://user-images.githubusercontent.com/1201850/131474786-298be2fe-979a-4be4-b4ec-ef3c7d4026fa.gif" width="250" >
 
 ### ShimmerBounds.Custom
 
