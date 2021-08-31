@@ -9,9 +9,3 @@ buildscript {
         classpath(Lib.kotlinGradlePlugin)
     }
 }
-
-tasks {
-    val clean by registering(Delete::class) {
-        delete(buildDir)
-    }
-}
