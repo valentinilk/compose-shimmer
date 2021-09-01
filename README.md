@@ -8,17 +8,16 @@ It was developed in need for a shimmer effect that traverses across the whole sc
 
 ## Download
 
-The library is not yet released. The README will be updated as soon as it is available.
-
 ```
 repositories {
-  // Not yet available
+  mavenCentral()
 }
 
 dependencies {
-  // Not yet available
+  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.0'
 }
 ```
+
 ## Usage
 
 The library provides a simple `shimmer()` modifier which can be applied like any other [modifier](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier) in Compose as well.
