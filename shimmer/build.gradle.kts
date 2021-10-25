@@ -36,7 +36,6 @@ dependencies {
         Lib.Compose.runtime,
         Lib.Compose.foundation,
         Lib.Compose.ui,
-        Lib.Compose.tooling
     ).forEach { dependency ->
         implementation(dependency)
     }
