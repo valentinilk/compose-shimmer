@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.0'
+  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.1'
 }
 ```
 
