@@ -6,8 +6,10 @@ import androidx.compose.ui.geometry.Rect
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun rememberShimmer(shimmerBounds: ShimmerBounds): Shimmer {
-    val theme = LocalShimmerTheme.current
+fun rememberShimmer(
+    shimmerBounds: ShimmerBounds,
+    theme: ShimmerTheme = LocalShimmerTheme.current,
+): Shimmer {
     val effect = rememberShimmerEffect(theme)
     val bounds  = rememberShimmerBounds(shimmerBounds)
 
@@ -16,10 +18,6 @@ fun rememberShimmer(shimmerBounds: ShimmerBounds): Shimmer {
     }
 }
 
-/**
- * Shimmer describes a shimmer fully, without Theme!?
- *
- */
 class Shimmer internal constructor(
     internal val theme: ShimmerTheme,
     internal val effect: ShimmerEffect,

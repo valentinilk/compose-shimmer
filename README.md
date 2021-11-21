@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.1'
+  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.2'
 }
 ```
 
@@ -73,8 +73,11 @@ CompositionLocalProvider(
 }
 
 ```
+As usual means the theme should be applied at the same level as for example the `MaterialTheme` is applied. There is no need to wrap every shimmer into a `CompositionLocalProvider`.
 
-The theme offers a few simple configurations like the shimmer's `rotation` or `width`. Additionally few unabstracted objects like an `AnimationSpec` or `BlendMode` are exposed. While this violates the principales of [information hiding](https://en.wikipedia.org/wiki/Information_hiding) it allows for some great customizations.
+If it is more convenient, the theme can also be passed as a parameter by using the `rememberShimmer(...)` function, which is explained further down below.
+
+The theme itself offers a few simple configurations like the shimmer's `rotation` or `width`. Additionally a few unabstracted objects like an `AnimationSpec` or `BlendMode` are exposed. While this violates the principales of [information hiding](https://en.wikipedia.org/wiki/Information_hiding) it allows for some great customizations.
 
 For further information have a look at documentation in data class itself and have a look at the `ThemingSamples` in the sample app.
 
@@ -86,7 +89,7 @@ The default `shimmer()` modifier creates a shimmering effect that will traverse 
 
 <img src="https://user-images.githubusercontent.com/1201850/131474721-29a57e04-139c-44b6-8721-5fb674706dc8.gif" width="250" >
 
-Due to the differences in sizes, all three shimmers have a different velocitiy, which doesn't look as calm as it should be. Even having in fact three different and independent shimmerings doesn't look as clean as it could.
+Due to the differences in sizes, all three shimmers have a different velocitiy, which doesn't look as calm as it should. It would be way cleaner if it was only a single animation traversing over the views we want to be shimmering. 
 
 That's why the library offers different options for the effect's boundaries:
 
@@ -95,9 +98,15 @@ val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.XXX)
 Box(modifier = Modifier.shimmer(shimmerInstance))
 ```
 
+### ShimmerBounds.View
+
+The default option, which was used to create the gifs above and is used in the theming samples in the app. Depending on the use case, this option might already be sufficient.
+
 ### ShimmerBounds.Window
 
 One option is to use the boundaries of the current window. This will create a shimmer that travels over the whole window, while affecting only the views (and child views) which have the shimmer modifier attached.
+
+Be aware that this option might look odd on scrollable content, because the shimmer will be positioned relative to the window and will not be moved together with the content. Depending on the theme this effect might be more or less visible. If the shimmer moves from the left to the right for example, and the content can only be scrolled up and down, this effect won't be visible and can be ignored.
 
 ```
 Column {
@@ -112,9 +121,7 @@ Column {
 
 ### ShimmerBounds.Custom
 
-By using the `Window` option one imperfection remains, which can be a problem if the content is for example scrollable. Attaching the effect to the window means its position is fixed. So while the shimmer is traversing over the content, the content itself might be moved relative to the shimmer. Depending on the theme this effect might be more or less visible.
-
-That's where the `ShimmerBounds.Custom` option comes into play. By using it the shimmer and its content will not be drawn until the bounds are set manually by using the `updateBounds` method on the `Shimmer`.
+The downsides of the `Window` option is why the `ShimmerBounds.Custom` option exists. By using it the shimmer and its content will not be drawn until the bounds are set manually by using the `updateBounds` method on the `Shimmer`. This allows for attaching the shimmer to a scrollable list for example.
 
 ```
 val shimmerInstance = rememberShimmer(ShimmerBounds.Custom)
@@ -134,6 +141,22 @@ Column(
 }
 ```
 Updating the bounds will not trigger a recomposition.
+
+## Custom Modifier
+
+It is also possible to create custom modifiers, if the default one is not convenient enough. One could, for example, create a modifier that takes in the animation duration as a parameter and creates the theming on the go. The whole code can be found in the `CustomModifierSample.kt` file in the sample app.
+
+```
+fun Modifier.shimmer(
+    duration: Int
+): Modifier = composed {
+    val shimmer = rememberShimmer(
+        shimmerBounds = ShimmerBounds.View,
+        theme = createCustomTheme(duration),
+    )
+     shimmer(customShimmer = shimmer)
+}
+```
 
 ## License
 ```
