@@ -5,11 +5,11 @@ object Config {
 
 object Lib {
 
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.0.0"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.0"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
     object Compose {
-        const val version = "1.0.5"
+        const val version = "1.1.1"
 
         const val runtime = "androidx.compose.runtime:runtime:$version"
         const val ui = "androidx.compose.ui:ui:$version"
@@ -18,10 +18,10 @@ object Lib {
         const val material = "androidx.compose.material:material:$version"
         const val icons = "androidx.compose.material:material-icons-extended:$version"
 
-        const val navigation = "androidx.navigation:navigation-compose:2.4.0-beta02"
+        const val navigation = "androidx.navigation:navigation-compose:2.4.2"
     }
 
     object Google {
-        const val material = "com.google.android.material:material:1.4.0"
+        const val material = "com.google.android.material:material:1.6.0"
     }
 }

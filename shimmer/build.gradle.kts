@@ -29,6 +29,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Lib.Compose.version
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
