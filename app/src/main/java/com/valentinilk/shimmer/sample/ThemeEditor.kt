@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.LocalShimmerTheme
 import com.valentinilk.shimmer.ShimmerTheme
+import kotlin.math.roundToInt
 
 @Composable
 fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Unit) {
@@ -33,7 +34,7 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
             style = MaterialTheme.typography.body1,
         )
 
-        Labeled(label = "Shimmer Width: ${shimmerTheme.shimmerWidth}") {
+        Labeled(label = "Shimmer Width: ${shimmerTheme.shimmerWidth.value.roundToInt()}") {
             Slider(
                 value = shimmerTheme.shimmerWidth.value,
                 onValueChange = {
@@ -54,7 +55,7 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
         }
 
 
-        Labeled("Rotation: ${shimmerTheme.rotation}") {
+        Labeled("Rotation: ${shimmerTheme.rotation.roundToInt()}") {
             Slider(
                 value = shimmerTheme.rotation,
                 onValueChange = {
