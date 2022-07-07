@@ -5,6 +5,7 @@ import androidx.compose.material.icons.outlined.AspectRatio
 import androidx.compose.material.icons.outlined.Crop
 import androidx.compose.material.icons.outlined.FitScreen
 import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.valentinilk.shimmer.sample.sizing.CustomSizeSample
@@ -41,5 +42,11 @@ enum class NavItems(
         Icons.Outlined.Palette,
         "Theming",
         { ThemingSamples() }
+    ),
+    EnablingSamples(
+        "enablingSamples",
+        Icons.Outlined.Visibility,
+        "Visibility",
+        { com.valentinilk.shimmer.sample.enabling.EnabledDisabledSample() }
     )
 }

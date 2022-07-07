@@ -17,23 +17,27 @@ import androidx.compose.ui.platform.debugInspectorInfo
 import kotlinx.coroutines.flow.collect
 
 fun Modifier.shimmer(
-    customShimmer: Shimmer? = null
+    customShimmer: Shimmer? = null,
+    enabled: Boolean = true
 ): Modifier = composed(
     factory = {
-        val shimmer = customShimmer ?: rememberShimmer(ShimmerBounds.View)
+        if (enabled) {
+            val shimmer = customShimmer ?: rememberShimmer(ShimmerBounds.View)
 
-        val width = with(LocalDensity.current) { shimmer.theme.shimmerWidth.toPx() }
-        val area = remember(width, shimmer.theme.rotation) {
-            ShimmerArea(width, shimmer.theme.rotation)
-        }
-
-        LaunchedEffect(area, shimmer) {
-            shimmer.boundsFlow.collect {
-                area.updateBounds(it)
+            val width = with(LocalDensity.current) { shimmer.theme.shimmerWidth.toPx() }
+            val area = remember(width, shimmer.theme.rotation) {
+                ShimmerArea(width, shimmer.theme.rotation)
             }
-        }
 
-        remember(area, shimmer) { ShimmerModifier(area, shimmer.effect) }
+
+            LaunchedEffect(area, shimmer) {
+                shimmer.boundsFlow.collect {
+                    area.updateBounds(it)
+                }
+            }
+
+            remember(area, shimmer) { ShimmerModifier(area, shimmer.effect) }
+        } else Modifier
     },
     inspectorInfo = debugInspectorInfo {
         name = "shimmer"
