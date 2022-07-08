@@ -12,6 +12,7 @@ import com.valentinilk.shimmer.sample.sizing.CustomSizeSample
 import com.valentinilk.shimmer.sample.sizing.ViewSizeSample
 import com.valentinilk.shimmer.sample.sizing.WindowSizeSample
 import com.valentinilk.shimmer.sample.theming.ThemingSamples
+import com.valentinilk.shimmer.sample.enabling.EnabledDisabledSample
 
 enum class NavItems(
     val route: String,
@@ -47,6 +48,6 @@ enum class NavItems(
         "enablingSamples",
         Icons.Outlined.Visibility,
         "Visibility",
-        { com.valentinilk.shimmer.sample.enabling.EnabledDisabledSample() }
+        { EnabledDisabledSample() }
     )
 }
