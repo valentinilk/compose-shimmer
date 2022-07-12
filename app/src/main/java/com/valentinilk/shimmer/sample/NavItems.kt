@@ -12,7 +12,7 @@ import com.valentinilk.shimmer.sample.sizing.CustomSizeSample
 import com.valentinilk.shimmer.sample.sizing.ViewSizeSample
 import com.valentinilk.shimmer.sample.sizing.WindowSizeSample
 import com.valentinilk.shimmer.sample.theming.ThemingSamples
-import com.valentinilk.shimmer.sample.enabling.EnabledDisabledSample
+import com.valentinilk.shimmer.sample.custom_shimmers.EnabledDisabledSample
 
 enum class NavItems(
     val route: String,

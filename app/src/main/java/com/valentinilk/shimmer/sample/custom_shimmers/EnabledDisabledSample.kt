@@ -1,4 +1,4 @@
-package com.valentinilk.shimmer.sample.enabling
+package com.valentinilk.shimmer.sample.custom_shimmers
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
