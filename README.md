@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.3'
+  implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.4'
 }
 ```
 
@@ -160,7 +160,7 @@ fun Modifier.shimmer(
 
 ## License
 ```
-Copyright 2021 Valentin Ilk
+Copyright 2023 Valentin Ilk
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

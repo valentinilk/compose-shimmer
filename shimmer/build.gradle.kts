@@ -57,13 +57,13 @@ afterEvaluate {
 
                 groupId = "com.valentinilk.shimmer"
                 artifactId = "compose-shimmer"
-                version = "1.0.3"
+                version = "1.0.4"
 
                 pom {
                     name.set("Compose Shimmer")
                     description.set("A shimmer library for Android's Jetpack Compose")
                     url.set("https://github.com/valentinilk/compose-shimmer/")
-                    inceptionYear.set("2022")
+                    inceptionYear.set("2021")
 
                     scm {
                         connection.set("scm:git:git://github.com/valentinilk/compose-shimmer.git")
