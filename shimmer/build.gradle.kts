@@ -7,6 +7,7 @@ plugins {
 
 android {
     compileSdk = Config.targetSdk
+    namespace = "com.valentinilk.shimmer"
 
     defaultConfig {
         minSdk = Config.minSdk
@@ -27,7 +28,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Lib.Compose.version
+        kotlinCompilerExtensionVersion = Lib.Compose.compiler
     }
 
     publishing {

@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdk = Config.targetSdk
+    namespace = "com.valentinilk.shimmer.sample"
 
     defaultConfig {
         applicationId = "com.valentinilk.shimmer.sample"
@@ -30,7 +31,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Lib.Compose.version
+        kotlinCompilerExtensionVersion = Lib.Compose.compiler
     }
 }
 
