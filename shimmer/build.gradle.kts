@@ -57,7 +57,7 @@ afterEvaluate {
 
                 groupId = "com.valentinilk.shimmer"
                 artifactId = "compose-shimmer"
-                version = "1.0.4"
+                version = "1.0.5"
 
                 pom {
                     name.set("Compose Shimmer")
