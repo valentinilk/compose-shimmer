@@ -6,19 +6,19 @@ object Config {
 object Lib {
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.4.0"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21"
 
     object Compose {
-        const val compiler = "1.4.0"
-        const val runtime = "androidx.compose.runtime:runtime:1.3.3"
+        const val compiler = "1.4.7"
+        const val runtime = "androidx.compose.runtime:runtime:1.4.3"
 
-        const val composeUi = "1.3.3"
+        const val composeUi = "1.4.3"
         const val ui = "androidx.compose.ui:ui:$composeUi"
         const val tooling = "androidx.compose.ui:ui-tooling:$composeUi"
 
-        const val foundation = "androidx.compose.foundation:foundation:1.3.1"
+        const val foundation = "androidx.compose.foundation:foundation:1.4.3"
 
-        const val composeMaterial = "1.3.1"
+        const val composeMaterial = "1.4.3"
         const val material = "androidx.compose.material:material:$composeMaterial"
         const val icons = "androidx.compose.material:material-icons-extended:$composeMaterial"
 

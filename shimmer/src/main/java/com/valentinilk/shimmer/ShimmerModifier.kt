@@ -10,7 +10,6 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.OnGloballyPositionedModifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
-import kotlinx.coroutines.flow.collect
 
 fun Modifier.shimmer(
     customShimmer: Shimmer? = null
