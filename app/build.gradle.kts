@@ -38,6 +38,7 @@ android {
 dependencies {
     arrayOf(
         project(":shimmer"),
+        platform(Lib.Compose.composeBom),
         Lib.Compose.material,
         Lib.Compose.icons,
         Lib.Compose.navigation,
