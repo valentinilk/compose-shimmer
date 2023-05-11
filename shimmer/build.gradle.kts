@@ -41,6 +41,7 @@ android {
 
 dependencies {
     arrayOf(
+        platform(Lib.Compose.composeBom),
         Lib.Compose.runtime,
         Lib.Compose.foundation,
         Lib.Compose.ui,
