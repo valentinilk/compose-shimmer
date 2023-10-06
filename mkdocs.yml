@@ -1,0 +1,44 @@
+site_name: 'Compose Shimmer'
+site_description: "Shimmer library for Jetpack Compose"
+site_author: '2023 Compose Shimmer Contributors'
+site_url: 'https://valentinilk.github.io/compose-shimmer/'
+remote_branch: gh-pages
+
+repo_name: 'Compose Shimmer'
+repo_url: 'https://github.com/valentinilk/compose-shimmer'
+
+copyright: 'Copyright 2023 Valentin Ilk'
+
+theme:
+  name: material
+  language: en
+  features:
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/valentinilk/compose-shimmer'
+
+# Symbolic link for the index.md is required, pointing to the README.md
+# ln -s README.md docs/index.md
+nav:
+  - 'Documentation': index.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
