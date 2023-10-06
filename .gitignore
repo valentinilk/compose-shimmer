@@ -65,5 +65,8 @@ lint/tmp/
 # Android Profiling
 *.hprof
 
+# Docs
+site
+
 # Symbolic link
 docs/index.md
