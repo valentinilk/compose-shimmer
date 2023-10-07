@@ -1,6 +1,7 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.composeMultiplatform)
     `maven-publish`
     signing
 }
@@ -11,16 +12,11 @@ android {
 
     defaultConfig {
         minSdk = Config.minSdk
-        targetSdk = Config.targetSdk
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -28,7 +24,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Lib.Compose.compiler
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
     publishing {
@@ -39,14 +35,21 @@ android {
     }
 }
 
-dependencies {
-    arrayOf(
-        platform(Lib.Compose.composeBom),
-        Lib.Compose.runtime,
-        Lib.Compose.foundation,
-        Lib.Compose.ui,
-    ).forEach { dependency ->
-        implementation(dependency)
+kotlin {
+    androidTarget()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                arrayOf(
+                    compose.runtime,
+                    compose.foundation,
+                    compose.ui,
+                ).forEach { dependency ->
+                    implementation(dependency)
+                }
+            }
+        }
     }
 }
 

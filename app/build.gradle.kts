@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
 }
 
 android {
@@ -31,22 +31,22 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Lib.Compose.compiler
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 }
 
 dependencies {
     arrayOf(
-        project(":shimmer"),
-        platform(Lib.Compose.composeBom),
-        Lib.Compose.material,
-        Lib.Compose.icons,
-        Lib.Compose.navigation,
-        Lib.Compose.runtime,
-        Lib.Compose.foundation,
-        Lib.Compose.ui,
-        Lib.Compose.tooling,
-        Lib.Google.material,
+        projects.shimmer,
+        libs.compose.bom,
+        libs.compose.material,
+        libs.compose.material.icons,
+        libs.compose.navigation,
+        libs.compose.runtime,
+        libs.compose.foundation,
+        libs.compose.ui,
+        libs.compose.tooling,
+        libs.material,
     ).forEach { dependency ->
         implementation(dependency)
     }
