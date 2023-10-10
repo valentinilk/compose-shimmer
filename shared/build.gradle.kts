@@ -26,9 +26,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(projects.shimmer)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
+                arrayOf(
+                    projects.shimmer,
+                    compose.runtime,
+                    compose.foundation,
+                    compose.ui,
+                ).forEach { dependency ->
+                    implementation(dependency)
+                }
             }
         }
         val iosX64Main by getting

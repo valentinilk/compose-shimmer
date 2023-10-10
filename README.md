@@ -1,4 +1,4 @@
-# Shimmer for Jetpack Compose
+# Shimmer for Jetpack Compose & Compose Multiplatform
 
 A library which offers a shimmering effect for Android's Jetpack Compose.
 
@@ -6,17 +6,19 @@ A library which offers a shimmering effect for Android's Jetpack Compose.
 
 ## Setup
 
-The library is available on maven central:
+The library is available on `mavenCentral()`.
 
 ``` kotlin
-repositories {
-  mavenCentral()
-}
-
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.0.5")
+  implementation("com.valentinilk.shimmer:compose-shimmer:1.1.0")
 }
 ```
+
+## Kotlin Multiplatform
+
+Currently supported KMP targets are:
+- Android
+- iOS
 
 ## Quick Start
 
