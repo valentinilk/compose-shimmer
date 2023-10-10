@@ -8,4 +8,13 @@ data class ScreenInfo(
 )
 
 @Composable
-expect fun rememberScreenInfo(): ScreenInfo
+internal expect fun rememberScreenInfo(): ScreenInfo
+
+@Composable
+internal fun ShimmerBounds.rememberScreenInfoOrNull(): ScreenInfo? {
+    return when (this) {
+        ShimmerBounds.Custom -> null
+        ShimmerBounds.View -> null
+        ShimmerBounds.Window -> rememberScreenInfo()
+    }
+}

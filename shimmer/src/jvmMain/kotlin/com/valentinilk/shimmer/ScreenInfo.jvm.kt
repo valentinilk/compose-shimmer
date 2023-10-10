@@ -14,7 +14,7 @@ import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 
 @Composable
-actual fun rememberScreenInfo(): ScreenInfo {
+internal actual fun rememberScreenInfo(): ScreenInfo {
     val window: Window? = LocalWindow.current
 
     var size by remember(window) {
