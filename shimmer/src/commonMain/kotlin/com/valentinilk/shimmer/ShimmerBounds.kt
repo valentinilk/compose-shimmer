@@ -8,13 +8,14 @@ import androidx.compose.ui.geometry.Rect
 internal fun rememberShimmerBounds(
     shimmerBounds: ShimmerBounds,
 ): Rect? {
+    val screenInfo = rememberScreenInfo()
     return remember(shimmerBounds) {
         when (shimmerBounds) {
             ShimmerBounds.Window -> Rect(
                 0f,
                 0f,
-                ScreenInfo.width.toFloat(),
-                ScreenInfo.height.toFloat()
+                screenInfo.width.toFloat(),
+                screenInfo.height.toFloat()
             )
             ShimmerBounds.Custom -> Rect.Zero
             ShimmerBounds.View -> null

@@ -1,6 +1,11 @@
 package com.valentinilk.shimmer
 
-expect object ScreenInfo {
-    val width: Int
-    val height: Int
-}
+import androidx.compose.runtime.Composable
+
+data class ScreenInfo(
+    val width: Int,
+    val height: Int,
+)
+
+@Composable
+expect fun rememberScreenInfo(): ScreenInfo
