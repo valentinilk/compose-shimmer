@@ -70,3 +70,11 @@ site
 
 # Symbolic link
 docs/index.md
+
+# iOS App
+iosApp/Podfile.lock
+iosApp/Pods/*
+iosApp/ShimmerSample.xcworkspace/*
+iosApp/ShimmerSample.xcodeproj/*
+!iosApp/ShimmerSample.xcodeproj/project.pbxproj
+shared/shared.podspec

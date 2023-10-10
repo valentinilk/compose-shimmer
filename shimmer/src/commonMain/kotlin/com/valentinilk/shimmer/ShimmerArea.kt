@@ -107,11 +107,11 @@ internal class ShimmerArea(
         return rotation + 90        // 0..90..0
     }
 
-    private fun Float.toRadian(): Float = this / 180 * 3.141592653589793f
+    private fun Float.toRadian(): Float = this / 180 * 3.1415927f
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (other == null || this::class != other::class) return false
 
         other as ShimmerArea
 

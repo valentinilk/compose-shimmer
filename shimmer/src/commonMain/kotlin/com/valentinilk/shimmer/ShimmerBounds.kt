@@ -3,20 +3,18 @@ package com.valentinilk.shimmer
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.platform.LocalContext
 
 @Composable
 internal fun rememberShimmerBounds(
     shimmerBounds: ShimmerBounds,
 ): Rect? {
-    val displayMetrics = LocalContext.current.resources.displayMetrics
-    return remember(shimmerBounds, displayMetrics) {
+    return remember(shimmerBounds) {
         when (shimmerBounds) {
             ShimmerBounds.Window -> Rect(
                 0f,
                 0f,
-                displayMetrics.widthPixels.toFloat(),
-                displayMetrics.heightPixels.toFloat()
+                ScreenInfo.width.toFloat(),
+                ScreenInfo.height.toFloat()
             )
             ShimmerBounds.Custom -> Rect.Zero
             ShimmerBounds.View -> null
@@ -24,8 +22,8 @@ internal fun rememberShimmerBounds(
     }
 }
 
-sealed class ShimmerBounds {
-    object Custom : ShimmerBounds()
-    object View : ShimmerBounds()
-    object Window : ShimmerBounds()
+sealed interface ShimmerBounds {
+    data object Custom : ShimmerBounds
+    data object View : ShimmerBounds
+    data object Window : ShimmerBounds
 }

@@ -1,6 +1,5 @@
 package com.valentinilk.shimmer
 
-import android.graphics.Matrix
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.runtime.Composable
@@ -11,6 +10,7 @@ import androidx.compose.ui.geometry.toRect
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradientShader
+import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
@@ -48,21 +48,13 @@ internal class ShimmerEffect(
 ) {
 
     private val animatedState = Animatable(0f)
-
     private val transformationMatrix = Matrix()
-
-    private val shader = LinearGradientShader(
-        from = Offset(-shimmerWidth / 2, 0f),
-        to = Offset(shimmerWidth / 2, 0f),
-        colors = shaderColors,
-        colorStops = shaderColorStops,
-    )
-
+    private val gradientFrom = Offset(-shimmerWidth / 2, 0f)
+    private val gradientTo = -gradientFrom
     private val paint = Paint().apply {
         isAntiAlias = true
         style = PaintingStyle.Fill
         blendMode = this@ShimmerEffect.blendMode
-        shader = this@ShimmerEffect.shader
     }
 
     internal suspend fun startAnimation() {
@@ -82,16 +74,24 @@ internal class ShimmerEffect(
 
         transformationMatrix.apply {
             reset()
-            postTranslate(traversal, 0f)
-            postRotate(rotation, pivotPoint.x, pivotPoint.y)
+            translate(pivotPoint.x, pivotPoint.y, 0f)
+            rotateZ(rotation)
+            translate(-pivotPoint.x, -pivotPoint.y, 0f)
+            translate(traversal, 0f, 0f)
         }
-        shader.setLocalMatrix(transformationMatrix)
+
+        paint.shader = LinearGradientShader(
+            from = transformationMatrix.map(gradientFrom),
+            to = transformationMatrix.map(gradientTo),
+            colors = shaderColors,
+            colorStops = shaderColorStops,
+        )
 
         val drawArea = size.toRect()
         drawIntoCanvas { canvas ->
             canvas.withSaveLayer(
                 bounds = drawArea,
-                emptyPaint
+                paint = emptyPaint,
             ) {
                 drawContent()
                 canvas.drawRect(drawArea, paint)
@@ -101,7 +101,7 @@ internal class ShimmerEffect(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (other == null || this::class != other::class) return false
 
         other as ShimmerEffect
 
