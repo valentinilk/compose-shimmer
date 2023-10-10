@@ -18,9 +18,13 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 
 material = { module = "com.google.android.material:material", version = "1.10.0" }
 
+# Temporarily required - Periodically reoccuring issue with multiplatform
+atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.17.3" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

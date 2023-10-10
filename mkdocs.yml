@@ -35,6 +35,7 @@ extra:
 # ln -s README.md docs/index.md
 nav:
   - 'Documentation': index.md
+  - 'API': api/shimmer/shimmer/com.valentinilk.shimmer/index.md
 
 markdown_extensions:
   - pymdownx.highlight:

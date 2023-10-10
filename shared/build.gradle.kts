@@ -31,6 +31,7 @@ kotlin {
                     compose.runtime,
                     compose.foundation,
                     compose.ui,
+                    libs.atomicfu,
                 ).forEach { dependency ->
                     implementation(dependency)
                 }

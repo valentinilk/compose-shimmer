@@ -70,6 +70,7 @@ site
 
 # Symbolic link
 docs/index.md
+docs/api/
 
 # iOS App
 iosApp/Podfile.lock

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.dokka)
     `maven-publish`
     signing
 }
@@ -55,6 +56,7 @@ kotlin {
                     compose.runtime,
                     compose.foundation,
                     compose.ui,
+                    libs.atomicfu,
                 ).forEach { dependency ->
                     implementation(dependency)
                 }
