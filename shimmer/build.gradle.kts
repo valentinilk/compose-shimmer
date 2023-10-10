@@ -1,10 +1,11 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.dokka)
-    `maven-publish`
-    signing
+    alias(libs.plugins.publish)
 }
 
 android {
@@ -39,15 +40,9 @@ android {
 kotlin {
     androidTarget()
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "shimmer"
-        }
-    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -74,58 +69,40 @@ kotlin {
     }
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components["release"])
+mavenPublishing {
+    coordinates(
+        "com.valentinilk.shimmer",
+        "compose-shimmer",
+        "1.1.0",
+    )
+    pom {
+        name.set("Compose Shimmer")
+        description.set("Shimmer library for Jetpack Compose and Compose Multiplatform")
+        url.set("https://github.com/valentinilk/compose-shimmer/")
+        inceptionYear.set("2021")
 
-                groupId = "com.valentinilk.shimmer"
-                artifactId = "compose-shimmer"
-                version = "1.1.0"
+        scm {
+            connection.set("scm:git:git://github.com/valentinilk/compose-shimmer.git")
+            developerConnection.set("scm:git:git://github.com/valentinilk/compose-shimmer.git")
+            url.set("https://github.com/valentinilk/compose-shimmer/")
+        }
 
-                pom {
-                    name.set("Compose Shimmer")
-                    description.set("A shimmer library for Android's Jetpack Compose")
-                    url.set("https://github.com/valentinilk/compose-shimmer/")
-                    inceptionYear.set("2021")
-
-                    scm {
-                        connection.set("scm:git:git://github.com/valentinilk/compose-shimmer.git")
-                        developerConnection.set("scm:git:git://github.com/valentinilk/compose-shimmer.git")
-                        url.set("https://github.com/valentinilk/compose-shimmer/")
-                    }
-
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                            distribution.set("repo")
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            id.set("valentinilk")
-                            name.set("Valentin Ilk")
-                            url.set("https://github.com/valentinilk/")
-                        }
-                    }
-                }
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
             }
         }
-        repositories {
-            maven {
-                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                credentials {
-                    username = project.property("ossrhUsername") as String
-                    password = project.property("ossrhPassword") as String
-                }
+
+        developers {
+            developer {
+                id.set("valentinilk")
+                name.set("Valentin Ilk")
+                url.set("https://github.com/valentinilk/")
             }
         }
     }
-
-    signing {
-        sign(publishing.publications["maven"])
-    }
+    publishToMavenCentral(SonatypeHost.S01)
+    signAllPublications()
 }
