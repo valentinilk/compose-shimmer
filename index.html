@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#shimmer-for-jetpack-compose" class="md-skip">
+        <a href="#shimmer-for-jetpack-compose-compose-multiplatform" class="md-skip">
           Skip to content
         </a>
       
@@ -285,6 +285,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-multiplatform" class="md-nav__link">
+    Kotlin Multiplatform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quick-start" class="md-nav__link">
     Quick Start
   </a>
@@ -388,6 +395,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-multiplatform" class="md-nav__link">
+    Kotlin Multiplatform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quick-start" class="md-nav__link">
     Quick Start
   </a>
@@ -467,19 +481,19 @@
   
 
 
-<h1 id="shimmer-for-jetpack-compose">Shimmer for Jetpack Compose</h1>
+<h1 id="shimmer-for-jetpack-compose-compose-multiplatform">Shimmer for Jetpack Compose &amp; Compose Multiplatform</h1>
 <p>A library which offers a shimmering effect for Android's Jetpack Compose.</p>
 <p><img src="https://user-images.githubusercontent.com/1201850/131474443-620d0777-5b42-4914-839d-e6250b083538.gif" width="500" ></p>
 <h2 id="setup">Setup</h2>
-<p>The library is available on maven central:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">mavenCentral</span><span class="p">()</span>
+<p>The library is available on <code>mavenCentral()</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.1.0&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.0.5&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div>
+<h2 id="kotlin-multiplatform">Kotlin Multiplatform</h2>
+<p>Currently supported KMP targets are:
+- Android
+- iOS</p>
 <h2 id="quick-start">Quick Start</h2>
 <p>A simple <code>shimmer()</code> modifier is provided, which can be applied like any
 other <a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier">modifier</a> in
