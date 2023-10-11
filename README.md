@@ -17,8 +17,11 @@ dependencies {
 ## Kotlin Multiplatform
 
 Currently supported KMP targets are:
+
 - Android
 - iOS
+- JVM (Desktop)
+- JS (Browser)
 
 ## Quick Start
 
@@ -187,6 +190,31 @@ fun Modifier.shimmer(
      shimmer(customShimmer = shimmer)
 }
 ```
+
+## Sample App
+
+Step one is to clone the repository.
+
+A sample app is included in the project. Run configurations are provided for each platform.
+
+### Android
+
+- Open the project in Android Studio
+- Select `app` run configuration, and start
+
+### Desktop
+
+Use the Android Studio run configuration `demo.desktop` or do the following in the terminal:
+
+- Run the following command: `./gradlew :shared:run`
+
+### Browser
+
+Use the Android Studio run configuration `demo.browser` or do the following in the terminal:
+
+- Run the following command: `./gradlew :shared:jsBrowserDevelopmentRun`
+
+A browser should open and show the sample app.
 
 ## License
 

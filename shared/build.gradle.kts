@@ -1,3 +1,5 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -9,9 +11,17 @@ android {
     namespace = "com.valentinilk.shimmer.shared"
 }
 
-// Currently only used for the iOS app.
 kotlin {
+    @Suppress("OPT_IN_USAGE")
+    targetHierarchy.default()
+
     androidTarget()
+
+    jvm("desktop")
+    js(IR) {
+        browser()
+        binaries.executable()
+    }
 
     listOf(
         iosX64(),
@@ -31,20 +41,35 @@ kotlin {
                     compose.runtime,
                     compose.foundation,
                     compose.ui,
+                    compose.material3,
                     libs.atomicfu,
                 ).forEach { dependency ->
                     implementation(dependency)
                 }
             }
         }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
+
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.common)
+                implementation(compose.desktop.currentOs)
+            }
         }
     }
+}
+
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.valentinilk.shimmer.desktop"
+            packageVersion = "1.0.0"
+        }
+    }
+}
+
+compose.experimental {
+    web.application {}
 }

@@ -31,8 +31,17 @@ android {
 }
 
 kotlin {
+    @Suppress("OPT_IN_USAGE")
+    targetHierarchy.default()
+
     androidTarget {
         publishLibraryVariants("release")
+    }
+
+    jvm()
+
+    js(IR) {
+        browser()
     }
 
     iosX64()
@@ -51,15 +60,6 @@ kotlin {
                     implementation(dependency)
                 }
             }
-        }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }

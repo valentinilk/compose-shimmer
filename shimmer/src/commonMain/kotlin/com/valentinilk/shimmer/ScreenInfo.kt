@@ -1,6 +1,7 @@
 package com.valentinilk.shimmer
 
-expect object ScreenInfo {
-    val width: Int
-    val height: Int
-}
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.geometry.Rect
+
+@Composable
+internal expect fun rememberWindowBounds(): Rect
