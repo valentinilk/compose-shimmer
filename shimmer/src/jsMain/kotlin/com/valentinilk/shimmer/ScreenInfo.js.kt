@@ -6,21 +6,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Rect
 import kotlinx.browser.window
 import org.w3c.dom.events.Event
 
 @Composable
-internal actual fun rememberScreenInfo(): ScreenInfo {
-    var screenInfo by remember {
-        mutableStateOf(ScreenInfo(window.innerWidth, window.innerHeight))
+internal actual fun rememberWindowBounds(): Rect {
+    var rect by remember {
+        mutableStateOf(
+            Rect(0f, 0f, window.innerWidth.toFloat(), window.innerHeight.toFloat()),
+        )
     }
 
     DisposableEffect(Unit) {
         val onResize: (Event) -> Unit = {
-            screenInfo = ScreenInfo(
-                width = window.innerWidth,
-                height = window.innerHeight,
-            )
+            rect =
+                Rect(0f, 0f, window.innerWidth.toFloat(), window.innerHeight.toFloat())
         }
 
         window.addEventListener(type = "resize", onResize)
@@ -29,5 +30,5 @@ internal actual fun rememberScreenInfo(): ScreenInfo {
         }
     }
 
-    return screenInfo
+    return rect
 }

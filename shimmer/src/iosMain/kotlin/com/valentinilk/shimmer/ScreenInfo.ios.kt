@@ -2,6 +2,7 @@ package com.valentinilk.shimmer
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.geometry.Rect
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.CoreGraphics.CGRectGetHeight
 import platform.CoreGraphics.CGRectGetWidth
@@ -9,10 +10,10 @@ import platform.UIKit.UIScreen
 
 @OptIn(ExperimentalForeignApi::class)
 @Composable
-internal actual fun rememberScreenInfo(): ScreenInfo {
+internal actual fun rememberWindowBounds(): Rect {
     return remember {
-        val width: Int = CGRectGetWidth(UIScreen.mainScreen.nativeBounds).toInt()
-        val height: Int = CGRectGetHeight(UIScreen.mainScreen.nativeBounds).toInt()
-        ScreenInfo(width, height)
+        val width = CGRectGetWidth(UIScreen.mainScreen.nativeBounds).toFloat()
+        val height = CGRectGetHeight(UIScreen.mainScreen.nativeBounds).toFloat()
+        Rect(0f, 0f, width, height)
     }
 }

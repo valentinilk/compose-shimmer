@@ -8,33 +8,34 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.window.LocalWindow
 import java.awt.Window
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 
 @Composable
-internal actual fun rememberScreenInfo(): ScreenInfo {
-    val window: Window? = LocalWindow.current
+internal actual fun rememberWindowBounds(): Rect {
+    val window: Window = LocalWindow.current ?: return Rect.Zero
 
-    var size by remember(window) {
-        mutableStateOf(ScreenInfo(window?.width ?: 0, window?.height ?: 0))
+    var rect by remember(window) {
+        mutableStateOf(Rect(0f, 0f, window.width.toFloat(), window.height.toFloat()))
     }
 
     // Add a listener and listen for componentResized events
     DisposableEffect(window) {
         val listener = object : ComponentAdapter() {
             override fun componentResized(event: ComponentEvent) {
-                size = ScreenInfo(window!!.width, window.height)
+                rect = Rect(0f, 0f, window.width.toFloat(), window.height.toFloat())
             }
         }
 
-        window?.addComponentListener(listener)
+        window.addComponentListener(listener)
 
         onDispose {
-            window?.removeComponentListener(listener)
+            window.removeComponentListener(listener)
         }
     }
 
-    return size
+    return rect
 }
