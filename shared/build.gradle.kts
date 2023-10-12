@@ -15,7 +15,13 @@ kotlin {
     @Suppress("OPT_IN_USAGE")
     targetHierarchy.default()
 
-    androidTarget()
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = JavaVersion.VERSION_1_8.toString()
+            }
+        }
+    }
 
     jvm("desktop")
     js(IR) {
