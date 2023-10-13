@@ -349,6 +349,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sample-apps" class="md-nav__link">
+    Sample Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    iOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desktop" class="md-nav__link">
+    Desktop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser" class="md-nav__link">
+    Browser
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     License
   </a>
@@ -474,6 +515,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sample-apps" class="md-nav__link">
+    Sample Apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample Apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    iOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desktop" class="md-nav__link">
+    Desktop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser" class="md-nav__link">
+    Browser
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     License
   </a>
@@ -504,13 +586,17 @@
 <h2 id="setup">Setup</h2>
 <p>The library is available on <code>mavenCentral()</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.1.1&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.2.0&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="kotlin-multiplatform">Kotlin Multiplatform</h2>
-<p>Currently supported KMP targets are:
-- Android
-- iOS</p>
+<p>Currently supported KMP targets are:</p>
+<ul>
+<li>Android</li>
+<li>iOS</li>
+<li>JVM (Desktop)</li>
+<li>JS (Browser)</li>
+</ul>
 <h2 id="quick-start">Quick Start</h2>
 <p>A simple <code>shimmer()</code> modifier is provided, which can be applied like any
 other <a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier">modifier</a> in
@@ -638,6 +724,20 @@ the sample app.</p>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>     shimmer(customShimmer = shimmer)
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>}
 </code></pre></div>
+<h2 id="sample-apps">Sample Apps</h2>
+<p>Sample apps for different platforms are included in the project.
+To use them, clone the repository into a folder locally.</p>
+<h3 id="android">Android</h3>
+<p>To run the Android app, simply open the project in Android Studio. Select the <code>app</code> configuration and run it.</p>
+<h3 id="ios">iOS</h3>
+<p>The iOS app can be build and launched by using XCode. Open the <code>iosApp</code> folder with XCode as a project. Adapt the
+signing in XCode to match your needs and launch the app on an emulator or iOS device.</p>
+<h3 id="desktop">Desktop</h3>
+<p>The desktop app can be launched by using the <code>demo.desktop</code> configuration in Android Studio. Or run
+<code>./gradlew :shared:run</code> in the terminal.</p>
+<h3 id="browser">Browser</h3>
+<p>To run the sample in the browser, simply use the <code>demo.browser</code> configuration in Android Studio. Or run
+<code>./gradlew :shared:jsBrowserDevelopmentRun</code> in the terminal.</p>
 <h2 id="license">License</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Copyright 2023 Valentin Ilk
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
