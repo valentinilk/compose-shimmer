@@ -18,13 +18,13 @@ import com.valentinilk.shimmer.shimmer
  * duration, would be more convenient.
  */
 fun Modifier.shimmer(
-    duration: Int
+    duration: Int,
 ): Modifier = composed {
     val shimmer = rememberShimmer(
         shimmerBounds = ShimmerBounds.View,
         theme = createCustomTheme(duration),
     )
-     shimmer(customShimmer = shimmer)
+    shimmer(customShimmer = shimmer)
 }
 
 private fun createCustomTheme(duration: Int) = defaultShimmerTheme.copy(

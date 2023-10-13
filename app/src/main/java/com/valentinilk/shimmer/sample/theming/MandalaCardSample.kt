@@ -47,7 +47,7 @@ private val mandalaCardTheme = defaultShimmerTheme.copy(
 @Composable
 fun MandalaCardSample() {
     CompositionLocalProvider(
-        LocalShimmerTheme provides mandalaCardTheme
+        LocalShimmerTheme provides mandalaCardTheme,
     ) {
         ThemingSampleCard {
             Box(
@@ -61,7 +61,7 @@ fun MandalaCardSample() {
                         .shimmer(),
                     painter = painterResource(R.drawable.mandala),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
                 )
             }
         }

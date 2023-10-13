@@ -23,7 +23,7 @@ import kotlin.math.roundToInt
 @Composable
 fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Unit) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Text(
             text = "Theme Editor",
@@ -54,7 +54,6 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
             }
         }
 
-
         Labeled("Rotation: ${shimmerTheme.rotation.roundToInt()}") {
             Slider(
                 value = shimmerTheme.rotation,
@@ -72,7 +71,7 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
 private fun AnimationSpecEditor(
     animationSpec: InfiniteRepeatableSpec<Float>,
     tweenSpec: TweenSpec<Float>,
-    onAnimationSpecChanged: (AnimationSpec<Float>) -> Unit
+    onAnimationSpecChanged: (AnimationSpec<Float>) -> Unit,
 ) {
     Labeled(label = "Duration: ${tweenSpec.durationMillis}") {
         Slider(
@@ -102,11 +101,11 @@ private fun AnimationSpecEditor(
 @Composable
 private fun Labeled(label: String, content: @Composable () -> Unit) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Text(text = label, style = MaterialTheme.typography.subtitle2)
         Box(
-            modifier = Modifier.padding(horizontal = 16.dp)
+            modifier = Modifier.padding(horizontal = 16.dp),
         ) {
             content()
         }
@@ -125,7 +124,7 @@ private fun Preview_ThemeEditor() {
     MaterialTheme {
         ThemeEditor(
             shimmerTheme = LocalShimmerTheme.current,
-            onThemeChanged = {}
+            onThemeChanged = {},
         )
     }
 }

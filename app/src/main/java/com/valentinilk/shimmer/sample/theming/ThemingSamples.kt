@@ -41,5 +41,5 @@ fun ThemingSampleCard(content: @Composable () -> Unit) = Card(
         .fillMaxWidth()
         .height(210.dp),
     content = content,
-    shape = RoundedCornerShape(CornerSize(12.dp))
+    shape = RoundedCornerShape(CornerSize(12.dp)),
 )

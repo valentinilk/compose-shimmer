@@ -47,21 +47,21 @@ private fun ShimmerOnParentSample() {
             Box(
                 modifier = Modifier
                     .size(80.dp, 80.dp)
-                    .background(Color.LightGray)
+                    .background(Color.LightGray),
             )
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(24.dp)
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
                 Box(
                     modifier = Modifier
                         .size(120.dp, 20.dp)
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
             }
         }
@@ -71,7 +71,7 @@ private fun ShimmerOnParentSample() {
             .fillMaxWidth()
             .padding(bottom = 8.dp),
         text = "Shimmer on Parent",
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
     )
 }
 
@@ -92,23 +92,23 @@ private fun ShimmerOnChildrenSample() {
                 modifier = Modifier
                     .size(80.dp, 80.dp)
                     .shimmer()
-                    .background(Color.LightGray)
+                    .background(Color.LightGray),
             )
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(24.dp)
                         .shimmer()
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
                 Box(
                     modifier = Modifier
                         .size(120.dp, 20.dp)
                         .shimmer()
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
             }
         }
@@ -118,6 +118,6 @@ private fun ShimmerOnChildrenSample() {
             .fillMaxWidth()
             .padding(bottom = 8.dp),
         text = "Shimmer on Child Views",
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
     )
 }

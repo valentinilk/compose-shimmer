@@ -42,7 +42,7 @@ private val skullCardTheme = defaultShimmerTheme.copy(
 @Composable
 fun SkullCardSample() {
     CompositionLocalProvider(
-        LocalShimmerTheme provides skullCardTheme
+        LocalShimmerTheme provides skullCardTheme,
     ) {
         ThemingSampleCard {
             Box(
@@ -56,7 +56,7 @@ fun SkullCardSample() {
                         .shimmer(),
                     painter = painterResource(R.drawable.skull),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
                 )
             }
         }

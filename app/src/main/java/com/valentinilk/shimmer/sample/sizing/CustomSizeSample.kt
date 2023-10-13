@@ -8,9 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.ShimmerBounds
-import com.valentinilk.shimmer.unclippedBoundsInWindow
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.sample.SampleColumn
+import com.valentinilk.shimmer.unclippedBoundsInWindow
 
 @Composable
 fun CustomSizeSample() {
@@ -25,7 +25,7 @@ fun CustomSizeSample() {
                     val position = layoutCoordinates.unclippedBoundsInWindow()
                     shimmer.updateBounds(position)
                 },
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             SharedShimmerSample(shimmer)
             NonShimmeringCard()

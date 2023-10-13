@@ -16,30 +16,30 @@ enum class NavItems(
     val route: String,
     val icon: ImageVector,
     val title: String,
-    val content: @Composable () -> Unit
+    val content: @Composable () -> Unit,
 ) {
     ViewSizeSample(
         "viewSizeSample",
         Icons.Outlined.FitScreen,
         "View",
-        { ViewSizeSample() }
+        { ViewSizeSample() },
     ),
     WindowSizeSample(
         "windowSizeSample",
         Icons.Outlined.AspectRatio,
         "Window",
-        { WindowSizeSample() }
+        { WindowSizeSample() },
     ),
     CustomSizeSample(
         "customSizeSample",
         Icons.Outlined.Crop,
         "Custom",
-        { CustomSizeSample() }
+        { CustomSizeSample() },
     ),
     ThemingSamples(
         "themingSamples",
         Icons.Outlined.Palette,
         "Theming",
-        { ThemingSamples() }
-    )
+        { ThemingSamples() },
+    ),
 }

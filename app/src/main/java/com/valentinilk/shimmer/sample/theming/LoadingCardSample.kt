@@ -24,7 +24,7 @@ fun LoadingCardSample() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(245, 245, 245)),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             Column(
                 // This example uses a custom modifier defined in CustomModifierSample.kt
@@ -35,7 +35,7 @@ fun LoadingCardSample() {
                     modifier = Modifier.size(64.dp),
                     imageVector = Icons.Outlined.Downloading,
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
                 )
                 Text("LOADING", style = MaterialTheme.typography.h4)
             }

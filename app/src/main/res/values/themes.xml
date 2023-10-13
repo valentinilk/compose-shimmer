@@ -1,8 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.ShimmerSample" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:statusBarColor">#FFF</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="Theme.ShimmerSample.NoActionBar">

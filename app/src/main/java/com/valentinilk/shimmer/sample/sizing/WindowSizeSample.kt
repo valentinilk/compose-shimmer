@@ -33,7 +33,7 @@ fun WindowSizeSample() {
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
             SharedShimmerSample(shimmer)
@@ -42,7 +42,6 @@ fun WindowSizeSample() {
         }
     }
 }
-
 
 @Composable
 fun SharedShimmerSample(shimmer: Shimmer) {
@@ -61,21 +60,21 @@ fun SharedShimmerSample(shimmer: Shimmer) {
             Box(
                 modifier = Modifier
                     .size(80.dp, 80.dp)
-                    .background(Color.LightGray)
+                    .background(Color.LightGray),
             )
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(24.dp)
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
                 Box(
                     modifier = Modifier
                         .size(120.dp, 20.dp)
-                        .background(Color.LightGray)
+                        .background(Color.LightGray),
                 )
             }
         }
@@ -103,7 +102,7 @@ fun NonShimmeringCard() {
                 contentDescription = null,
             )
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Text(
                     text = "Some Headline",
