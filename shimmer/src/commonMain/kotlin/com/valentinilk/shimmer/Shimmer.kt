@@ -12,10 +12,11 @@ fun rememberShimmer(
 ): Shimmer {
     val effect = rememberShimmerEffect(theme)
     val bounds = rememberShimmerBounds(shimmerBounds)
-
-    return remember(theme, effect, bounds) {
+    val shimmer = remember(theme, effect) {
         Shimmer(theme, effect, bounds)
     }
+    shimmer.updateBounds(bounds)
+    return shimmer
 }
 
 class Shimmer internal constructor(
