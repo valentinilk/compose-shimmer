@@ -10,7 +10,7 @@ The library is available on `mavenCentral()`.
 
 ``` kotlin
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.1.1")
+  implementation("com.valentinilk.shimmer:compose-shimmer:1.2.0")
 }
 ```
 
@@ -191,30 +191,29 @@ fun Modifier.shimmer(
 }
 ```
 
-## Sample App
+## Sample Apps
 
-Step one is to clone the repository.
-
-A sample app is included in the project. Run configurations are provided for each platform.
+Sample apps for different platforms are included in the project.
+To use them, clone the repository into a folder locally.
 
 ### Android
 
-- Open the project in Android Studio
-- Select `app` run configuration, and start
+To run the Android app, simply open the project in Android Studio. Select the `app` configuration and run it.
+
+### iOS
+
+The iOS app can be build and launched by using XCode. Open the `iosApp` folder with XCode as a project. Adapt the
+signing in XCode to match your needs and launch the app on an emulator or iOS device.
 
 ### Desktop
 
-Use the Android Studio run configuration `demo.desktop` or do the following in the terminal:
-
-- Run the following command: `./gradlew :shared:run`
+The desktop app can be launched by using the `demo.desktop` configuration in Android Studio. Or run
+`./gradlew :shared:run` in the terminal.
 
 ### Browser
 
-Use the Android Studio run configuration `demo.browser` or do the following in the terminal:
-
-- Run the following command: `./gradlew :shared:jsBrowserDevelopmentRun`
-
-A browser should open and show the sample app.
+To run the sample in the browser, simply use the `demo.browser` configuration in Android Studio. Or run
+`./gradlew :shared:jsBrowserDevelopmentRun` in the terminal.
 
 ## License
 

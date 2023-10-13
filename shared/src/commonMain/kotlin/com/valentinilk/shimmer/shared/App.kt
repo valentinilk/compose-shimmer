@@ -28,7 +28,7 @@ fun App() {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .size(128.dp)
+                .size(300.dp, 128.dp)
                 .shimmer()
                 .background(Color.LightGray),
         ) {
