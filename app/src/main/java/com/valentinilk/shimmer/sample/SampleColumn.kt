@@ -24,7 +24,7 @@ import com.valentinilk.shimmer.defaultShimmerTheme
 @Composable
 fun SampleColumn(
     title: String,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
         modifier = Modifier

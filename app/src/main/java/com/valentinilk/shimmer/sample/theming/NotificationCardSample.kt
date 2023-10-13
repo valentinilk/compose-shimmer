@@ -43,24 +43,25 @@ private val notificationCardTheme = defaultShimmerTheme.copy(
 @Composable
 fun NotificationCardSample() {
     CompositionLocalProvider(
-        LocalShimmerTheme provides notificationCardTheme
+        LocalShimmerTheme provides notificationCardTheme,
     ) {
         ThemingSampleCard {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.DarkGray),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center,
             ) {
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .shimmer(),
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .shimmer(),
                 )
                 Icon(
                     modifier = Modifier.size(128.dp),
                     painter = painterResource(id = R.drawable.mail_unread),
                     tint = Color.Unspecified,
-                    contentDescription = null
+                    contentDescription = null,
                 )
             }
         }

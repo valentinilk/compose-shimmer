@@ -11,7 +11,7 @@ fun rememberShimmer(
     theme: ShimmerTheme = LocalShimmerTheme.current,
 ): Shimmer {
     val effect = rememberShimmerEffect(theme)
-    val bounds  = rememberShimmerBounds(shimmerBounds)
+    val bounds = rememberShimmerBounds(shimmerBounds)
 
     return remember(theme, effect, bounds) {
         Shimmer(theme, effect, bounds)

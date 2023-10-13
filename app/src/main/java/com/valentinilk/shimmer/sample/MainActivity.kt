@@ -38,11 +38,11 @@ fun MainContent() {
         colors = MaterialTheme.colors.copy(
             primary = Color.White,
             onPrimary = Color.Black,
-        )
+        ),
     ) {
         val navController = rememberNavController()
         Scaffold(
-            bottomBar = { BottomNavigationBar(navController) }
+            bottomBar = { BottomNavigationBar(navController) },
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
                 Navigation(navController)

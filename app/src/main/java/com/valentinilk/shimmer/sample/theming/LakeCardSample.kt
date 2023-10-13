@@ -52,12 +52,12 @@ private val lakeCardTheme = defaultShimmerTheme.copy(
 @Composable
 fun LakeCardSample() {
     CompositionLocalProvider(
-        LocalShimmerTheme provides lakeCardTheme
+        LocalShimmerTheme provides lakeCardTheme,
     ) {
         ThemingSampleCard {
             Box(
                 modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center,
             ) {
                 Image(
                     modifier = Modifier.fillMaxSize(),
@@ -75,7 +75,7 @@ fun LakeCardSample() {
                 )
                 Box(
                     modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.BottomEnd
+                    contentAlignment = Alignment.BottomEnd,
                 ) {
                     Text(
                         modifier = Modifier.padding(end = 4.dp),
@@ -83,7 +83,7 @@ fun LakeCardSample() {
                         style = MaterialTheme.typography.caption.copy(
                             color = Color.White,
                             fontSize = 8.sp,
-                        )
+                        ),
                     )
                 }
             }

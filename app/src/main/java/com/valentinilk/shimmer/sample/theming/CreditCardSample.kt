@@ -41,18 +41,19 @@ private val creditCardTheme = defaultShimmerTheme.copy(
 @Composable
 fun CreditCardSample() {
     CompositionLocalProvider(
-        LocalShimmerTheme provides creditCardTheme
+        LocalShimmerTheme provides creditCardTheme,
     ) {
         ThemingSampleCard {
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .shimmer()
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .shimmer(),
             ) {
                 Image(
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(id = R.drawable.creditcard),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
                 )
             }
         }

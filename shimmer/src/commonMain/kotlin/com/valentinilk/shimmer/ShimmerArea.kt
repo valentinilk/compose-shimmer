@@ -101,10 +101,10 @@ internal class ShimmerArea(
         if (this < 0f) {
             throw IllegalArgumentException("The shimmer's rotation must be a positive number")
         }
-        var rotation = this % 180   // 0..179, 0
-        rotation -= 90              // -90..0..89, -90
-        rotation = -abs(rotation)   // -90..0..-90
-        return rotation + 90        // 0..90..0
+        var rotation = this % 180 // 0..179, 0
+        rotation -= 90 // -90..0..89, -90
+        rotation = -abs(rotation) // -90..0..-90
+        return rotation + 90 // 0..90..0
     }
 
     private fun Float.toRadian(): Float = this / 180 * 3.1415927f

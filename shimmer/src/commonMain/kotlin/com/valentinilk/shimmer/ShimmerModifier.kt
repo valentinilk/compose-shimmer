@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
 
 fun Modifier.shimmer(
-    customShimmer: Shimmer? = null
+    customShimmer: Shimmer? = null,
 ): Modifier = composed(
     factory = {
         val shimmer = customShimmer ?: rememberShimmer(ShimmerBounds.View)
@@ -33,7 +33,7 @@ fun Modifier.shimmer(
     inspectorInfo = debugInspectorInfo {
         name = "shimmer"
         properties["customShimmer"] = customShimmer
-    }
+    },
 )
 
 internal class ShimmerModifier(
