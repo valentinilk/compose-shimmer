@@ -1,8 +1,8 @@
 [versions]
 agp = "8.1.2"
-kotlin = "1.9.10"
-compose = "1.5.3"
-compose-compiler = "1.5.3"
+kotlin = "1.9.23"
+compose = "1.6.1"
+compose-compiler = "1.5.10"
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2023.10.00" }
@@ -19,7 +19,7 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 material = { module = "com.google.android.material:material", version = "1.10.0" }
 
 # Temporarily required - Periodically reoccuring issue with multiplatform
-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.17.3" }
+atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.23.2" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
