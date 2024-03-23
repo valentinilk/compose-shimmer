@@ -49,7 +49,7 @@ kotlin {
         browser()
     }
 
-    wasmJs(){
+    wasmJs {
         browser()
     }
 
