@@ -32,7 +32,7 @@ android {
 
 kotlin {
     @Suppress("OPT_IN_USAGE")
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     androidTarget {
         publishLibraryVariants("release")
@@ -49,21 +49,32 @@ kotlin {
         browser()
     }
 
+    wasmJs {
+        browser()
+    }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                arrayOf(
-                    compose.runtime,
-                    compose.foundation,
-                    compose.ui,
-                    libs.atomicfu,
-                ).forEach { dependency ->
-                    implementation(dependency)
-                }
+
+        val wasmJsMain by getting
+
+        val skikoMain by creating {
+            dependsOn(commonMain.get())
+            iosMain.get().dependsOn(this)
+            jsMain.get().dependsOn(this)
+            jvmMain.get().dependsOn(this)
+            wasmJsMain.dependsOn(this)
+        }
+
+        commonMain.dependencies {
+            arrayOf(
+                compose.foundation,
+                libs.atomicfu,
+            ).forEach { dependency ->
+                implementation(dependency)
             }
         }
     }
