@@ -72,7 +72,6 @@ kotlin {
         commonMain.dependencies {
             arrayOf(
                 compose.foundation,
-                libs.atomicfu,
             ).forEach { dependency ->
                 implementation(dependency)
             }

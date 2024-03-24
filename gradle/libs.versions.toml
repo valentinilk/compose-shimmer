@@ -1,11 +1,11 @@
 [versions]
-agp = "8.1.2"
-kotlin = "1.9.22"
+agp = "8.1.4"
+kotlin = "1.9.23"
 compose = "1.6.1"
-compose-compiler = "1.5.10"
+compose-compiler = "1.5.11"
 
 [libraries]
-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2023.10.00" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.03.00" }
 compose-runtime = { module = "androidx.compose.runtime:runtime" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -18,9 +18,6 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 
 material = { module = "com.google.android.material:material", version = "1.10.0" }
 
-# Temporarily required - Periodically reoccuring issue with multiplatform
-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.23.2" }
-
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -29,4 +26,4 @@ dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.6.1"}
-publish = { id = "com.vanniktech.maven.publish", version = "0.25.3" }
+publish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }

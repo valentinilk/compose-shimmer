@@ -48,7 +48,6 @@ kotlin {
                     compose.foundation,
                     compose.ui,
                     compose.material3,
-                    libs.atomicfu,
                 ).forEach { dependency ->
                     implementation(dependency)
                 }
