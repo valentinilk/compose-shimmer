@@ -12,8 +12,7 @@ android {
 }
 
 kotlin {
-    @Suppress("OPT_IN_USAGE")
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     androidTarget {
         compilations.all {
@@ -24,7 +23,13 @@ kotlin {
     }
 
     jvm("desktop")
+
     js(IR) {
+        browser()
+        binaries.executable()
+    }
+
+    wasmJs {
         browser()
         binaries.executable()
     }

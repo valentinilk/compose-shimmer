@@ -22,6 +22,7 @@ Currently supported KMP targets are:
 - iOS
 - JVM (Desktop)
 - JS (Browser)
+- Wasm (WebAssembly)
 
 ## Quick Start
 
@@ -213,7 +214,12 @@ The desktop app can be launched by using the `demo.desktop` configuration in And
 ### Browser
 
 To run the sample in the browser, simply use the `demo.browser` configuration in Android Studio. Or run
-`./gradlew :shared:jsBrowserDevelopmentRun` in the terminal.
+`./gradlew :shared:jsBrowserRun` in the terminal.
+
+### WebAssembly (Wasm)
+
+To run the wasm sample use the `demo.wasm` configuration in Android Studio or run `./gradlew :shared:wasmJsBrowserRun`
+in the terminal.
 
 ## License
 
