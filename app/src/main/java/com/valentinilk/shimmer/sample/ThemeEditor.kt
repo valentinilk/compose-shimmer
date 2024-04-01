@@ -1,8 +1,8 @@
 package com.valentinilk.shimmer.sample
 
-import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.animation.core.InfiniteRepeatableSpec
-import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.DurationBasedAnimationSpec
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,12 +12,17 @@ import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.LocalShimmerTheme
 import com.valentinilk.shimmer.ShimmerTheme
+import com.valentinilk.shimmer.shimmerSpec
 import kotlin.math.roundToInt
 
 @Composable
@@ -45,13 +50,10 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
             )
         }
 
-        // Only supports the default specs
-        val animationSpec = shimmerTheme.animationSpec as? InfiniteRepeatableSpec<Float>
-        val tweenSpec = animationSpec?.animation as? TweenSpec<Float>
-        if (animationSpec != null && tweenSpec != null) {
-            AnimationSpecEditor(animationSpec, tweenSpec) { newSpec ->
-                onThemeChanged(shimmerTheme.copy(animationSpec = newSpec))
-            }
+        AnimationSpecEditor { newSpec ->
+            onThemeChanged(
+                shimmerTheme.copy(animationSpec = infiniteRepeatable(newSpec, RepeatMode.Restart)),
+            )
         }
 
         Labeled("Rotation: ${shimmerTheme.rotation.roundToInt()}") {
@@ -69,28 +71,39 @@ fun ThemeEditor(shimmerTheme: ShimmerTheme, onThemeChanged: (ShimmerTheme) -> Un
 
 @Composable
 private fun AnimationSpecEditor(
-    animationSpec: InfiniteRepeatableSpec<Float>,
-    tweenSpec: TweenSpec<Float>,
-    onAnimationSpecChanged: (AnimationSpec<Float>) -> Unit,
+    onAnimationSpecChanged: (DurationBasedAnimationSpec<Float>) -> Unit,
 ) {
-    Labeled(label = "Duration: ${tweenSpec.durationMillis}") {
+    var durationMillis by remember { mutableFloatStateOf(800f) }
+    var delayMillis by remember { mutableFloatStateOf(1_500f) }
+
+    Labeled(label = "Duration: ${durationMillis.toInt()}") {
         Slider(
-            value = tweenSpec.durationMillis.toFloat(),
+            value = durationMillis,
             onValueChange = { duration ->
-                val tweenCopy = tweenSpec.copy(durationMillis = duration.toInt())
-                onAnimationSpecChanged(animationSpec.copy(animationSpec = tweenCopy))
+                durationMillis = duration
+                onAnimationSpecChanged(
+                    shimmerSpec(
+                        durationMillis = duration.toInt(),
+                        delayMillis = delayMillis.toInt(),
+                    ),
+                )
             },
             valueRange = 250f..3000f,
             colors = redSliderColors(),
         )
     }
 
-    Labeled(label = "Delay: ${tweenSpec.delay}") {
+    Labeled(label = "Delay: ${delayMillis.toInt()}") {
         Slider(
-            value = tweenSpec.delay.toFloat(),
+            value = delayMillis,
             onValueChange = { delay ->
-                val tweenCopy = tweenSpec.copy(delayMillis = delay.toInt())
-                onAnimationSpecChanged(animationSpec.copy(animationSpec = tweenCopy))
+                delayMillis = delay
+                onAnimationSpecChanged(
+                    shimmerSpec(
+                        durationMillis = durationMillis.toInt(),
+                        delayMillis = delay.toInt(),
+                    ),
+                )
             },
             valueRange = 0f..3000f,
             colors = redSliderColors(),
