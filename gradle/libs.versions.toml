@@ -18,6 +18,9 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 
 material = { module = "com.google.android.material:material", version = "1.10.0" }
 
+# Testing libaries
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.8.0" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

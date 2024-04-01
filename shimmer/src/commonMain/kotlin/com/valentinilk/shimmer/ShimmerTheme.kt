@@ -4,7 +4,6 @@ import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.tween
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
@@ -59,8 +58,8 @@ data class ShimmerTheme(
 
 val defaultShimmerTheme: ShimmerTheme = ShimmerTheme(
     animationSpec = infiniteRepeatable(
-        animation = tween(
-            800,
+        animation = shimmerSpec(
+            durationMillis = 800,
             easing = LinearEasing,
             delayMillis = 1_500,
         ),

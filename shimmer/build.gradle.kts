@@ -1,4 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -20,19 +21,21 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
 }
 
 kotlin {
-    @Suppress("OPT_IN_USAGE")
-    applyDefaultHierarchyTemplate()
+    applyHierarchyTemplate {
+        withSourceSetTree(KotlinSourceSetTree.main, KotlinSourceSetTree.test)
+        common {
+            group("skiko") {
+                withIos()
+                withJs()
+                withJvm()
+                withWasm()
+            }
+            withAndroidTarget()
+        }
+    }
 
     androidTarget {
         publishLibraryVariants("release")
@@ -58,23 +61,12 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-
-        val wasmJsMain by getting
-
-        val skikoMain by creating {
-            dependsOn(commonMain.get())
-            iosMain.get().dependsOn(this)
-            jsMain.get().dependsOn(this)
-            jvmMain.get().dependsOn(this)
-            wasmJsMain.dependsOn(this)
-        }
-
         commonMain.dependencies {
-            arrayOf(
-                compose.foundation,
-            ).forEach { dependency ->
-                implementation(dependency)
-            }
+            implementation(compose.foundation)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutines.test)
         }
     }
 }
