@@ -1,7 +1,7 @@
 [versions]
 agp = "8.1.4"
-kotlin = "1.9.23"
-compose = "1.6.1"
+kotlin = "2.0.0"
+compose = "1.6.10"
 compose-compiler = "1.5.11"
 
 [libraries]
@@ -13,7 +13,7 @@ compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-material = { module = "androidx.compose.material:material" }
 
 # Extended icon pack can not be found in the BOM currently. Version ref can be removed in the future.
-compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version = "1.6.8" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.7.4" }
 
 material = { module = "com.google.android.material:material", version = "1.10.0" }
@@ -28,5 +28,6 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.6.1"}
 publish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
