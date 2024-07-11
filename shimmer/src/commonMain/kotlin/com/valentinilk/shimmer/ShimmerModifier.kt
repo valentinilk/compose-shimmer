@@ -1,45 +1,51 @@
 package com.valentinilk.shimmer
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.draw.DrawModifier
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.layout.LayoutCoordinates
-import androidx.compose.ui.layout.OnGloballyPositionedModifier
+import androidx.compose.ui.node.DrawModifierNode
+import androidx.compose.ui.node.GlobalPositionAwareModifierNode
+import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.debugInspectorInfo
 
+@Composable
 fun Modifier.shimmer(
-    customShimmer: Shimmer? = null,
-): Modifier = composed(
-    factory = {
-        val shimmer = customShimmer ?: rememberShimmer(ShimmerBounds.View)
-
-        val width = with(LocalDensity.current) { shimmer.theme.shimmerWidth.toPx() }
-        val area = remember(width, shimmer.theme.rotation) {
-            ShimmerArea(width, shimmer.theme.rotation)
+    customShimmer: Shimmer = rememberShimmer(ShimmerBounds.View),
+): Modifier {
+    val width = with(LocalDensity.current) { customShimmer.theme.shimmerWidth.toPx() }
+    val area = remember(width, customShimmer.theme.rotation) {
+        ShimmerArea(width, customShimmer.theme.rotation)
+    }
+    LaunchedEffect(area, customShimmer) {
+        customShimmer.boundsFlow.collect {
+            area.updateBounds(it)
         }
+    }
+    return this then ShimmerElement(area, customShimmer.effect)
+}
 
-        LaunchedEffect(area, shimmer) {
-            shimmer.boundsFlow.collect {
-                area.updateBounds(it)
-            }
-        }
+private data class ShimmerElement(
+    var area: ShimmerArea,
+    var effect: ShimmerEffect,
+) : ModifierNodeElement<ShimmerNode>() {
 
-        remember(area, shimmer) { ShimmerModifier(area, shimmer.effect) }
-    },
-    inspectorInfo = debugInspectorInfo {
-        name = "shimmer"
-        properties["customShimmer"] = customShimmer
-    },
-)
+    override fun create(): ShimmerNode = ShimmerNode(area, effect)
 
-internal class ShimmerModifier(
-    private val area: ShimmerArea,
-    private val effect: ShimmerEffect,
-) : DrawModifier, OnGloballyPositionedModifier {
+    override fun update(node: ShimmerNode) {
+        node.area = area
+        node.effect = effect
+    }
+}
+
+private class ShimmerNode(
+    var area: ShimmerArea,
+    var effect: ShimmerEffect,
+) : Modifier.Node(),
+    DrawModifierNode,
+    GlobalPositionAwareModifierNode {
 
     override fun ContentDrawScope.draw() {
         with(effect) { draw(area) }
