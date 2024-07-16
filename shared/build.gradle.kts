@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = Config.targetSdk
+    compileSdk = libs.versions.targetSdk.get().toInt()
     namespace = "com.valentinilk.shimmer.shared"
 }
 

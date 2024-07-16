@@ -3,6 +3,8 @@ agp = "8.1.4"
 kotlin = "1.9.23"
 compose = "1.6.1"
 compose-compiler = "1.5.11"
+targetSdk = "34"
+minSdk = "21"
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.03.00" }
