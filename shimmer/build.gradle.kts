@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    compileSdk = Config.targetSdk
+    compileSdk = libs.versions.targetSdk.get().toInt()
     namespace = "com.valentinilk.shimmer"
 
     defaultConfig {
-        minSdk = Config.minSdk
+        minSdk = libs.versions.minSdk.get().toInt()
     }
 
     compileOptions {

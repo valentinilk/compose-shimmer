@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk = Config.targetSdk
+    compileSdk = libs.versions.targetSdk.get().toInt()
     namespace = "com.valentinilk.shimmer.sample"
 
     defaultConfig {
         applicationId = "com.valentinilk.shimmer.sample"
 
-        minSdk = Config.minSdk
-        targetSdk = Config.targetSdk
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         versionCode = 1
         versionName = "1.0"
