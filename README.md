@@ -1,6 +1,6 @@
 # Shimmer for Jetpack Compose & Compose Multiplatform
 
-A library which offers a shimmering effect for Android's Jetpack Compose.
+A library which offers a shimmering effect for Compose.
 
 <img src="https://user-images.githubusercontent.com/1201850/131474443-620d0777-5b42-4914-839d-e6250b083538.gif" width="500" >
 
@@ -14,10 +14,9 @@ dependencies {
 }
 ```
 
-## Kotlin Multiplatform
+## Multiplatform Targets
 
 Currently supported KMP targets are:
-
 - Android
 - iOS
 - JVM (Desktop)
@@ -26,14 +25,51 @@ Currently supported KMP targets are:
 
 ## Quick Start
 
-A simple `shimmer()` modifier is provided, which can be applied like any
-other [modifier](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier) in
-Compose as well.
+Simply apply the `shimmer` modifier to any UI of your choice. The code below will emit the shimmering UI that can be
+seen in the gif above.
+``` kotlin hl_lines="5"
+@Composable
+fun ShimmeringPlaceholder() {
+    Row(
+        modifier = Modifier
+            .shimmer() // <- Affects all subsequent UI elements
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        Box(
+            modifier = Modifier
+                .size(80.dp, 80.dp)
+                .background(Color.LightGray),
+        )
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(24.dp)
+                    .background(Color.LightGray),
+            )
+            Box(
+                modifier = Modifier
+                    .size(120.dp, 20.dp)
+                    .background(Color.LightGray),
+            )
+        }
+    }
+}
+```
 
-As usual, the order of the modifiers matters. Every visual defined **after** the `shimmer()`
-modifier will be affected by the animation. This includes child views and other modifiers:
+## Modifier placement
 
-``` kotlin hl_lines="4 5 11"
+As usual with [modifiers](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier) the order matters.
+Every UI component defined **after** the `shimmer` modifier will be affected by the animation. This includes child views
+and other modifiers:
+
+The first example demonstrates that only the inner `Box` is shimmering, even though the `shimmer` has been added to
+the outer `Box`'s modifier stack. The blue `background` is not shimmering, as it's sitting above the `shimmer` modifier.
+``` kotlin hl_lines="5"
 Box(
   modifier = Modifier
     .size(128.dp)
@@ -51,7 +87,10 @@ Box(
 
 <img src="https://user-images.githubusercontent.com/1201850/131474508-c572076c-d707-4ba1-9e84-729c1dc06f3f.gif" width="128" height="128">
 
-``` kotlin hl_lines="4 5 11"
+
+If the modifier, however, is applied earlier, the outer `Box`'s `background` modifier is affected by the
+`shimmer` as well.
+``` kotlin hl_lines="4"
 Box(
   modifier = Modifier
     .size(128.dp)
@@ -168,27 +207,6 @@ Column(
   Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
   Text("Non-shimmering Text")
   Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
-}
-```
-
-Updating the bounds will not trigger a recomposition.
-
-## Custom Modifier
-
-It is also possible to create custom modifiers, if the default one is not convenient enough.
-One could, for example, create a modifier that takes in the animation duration as a parameter and
-creates the theming on the go. The whole code can be found in the `CustomModifierSample.kt` file in
-the sample app.
-
-```
-fun Modifier.shimmer(
-    duration: Int
-): Modifier = composed {
-    val shimmer = rememberShimmer(
-        shimmerBounds = ShimmerBounds.View,
-        theme = createCustomTheme(duration),
-    )
-     shimmer(customShimmer = shimmer)
 }
 ```
 
