@@ -20,4 +20,4 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
 
       - name: Check style
-        run: ./gradlew check
+        run: ./gradlew ktlintCheck
