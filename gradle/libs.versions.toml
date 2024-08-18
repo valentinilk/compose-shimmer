@@ -1,13 +1,12 @@
 [versions]
 agp = "8.1.4"
-kotlin = "1.9.23"
-compose = "1.6.1"
-compose-compiler = "1.5.11"
+kotlin = "2.0.10"
+compose = "1.6.11"
 targetSdk = "34"
 minSdk = "21"
 
 [libraries]
-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.03.00" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.06.00" }
 compose-runtime = { module = "androidx.compose.runtime:runtime" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -15,17 +14,18 @@ compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-material = { module = "androidx.compose.material:material" }
 
 # Extended icon pack can not be found in the BOM currently. Version ref can be removed in the future.
-compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version = "1.6.8" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.7.4" }
 
 material = { module = "com.google.android.material:material", version = "1.10.0" }
 
 # Testing libaries
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.8.0" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.8.1" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
