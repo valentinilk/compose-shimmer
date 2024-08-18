@@ -10,7 +10,7 @@ The library is available on `mavenCentral()`.
 
 ``` kotlin
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.0")
+  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.1")
 }
 ```
 
