@@ -1,4 +1,7 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -25,6 +28,7 @@ android {
 }
 
 kotlin {
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     applyHierarchyTemplate {
         withSourceSetTree(KotlinSourceSetTree.main, KotlinSourceSetTree.test)
         common {
@@ -32,7 +36,7 @@ kotlin {
                 withIos()
                 withJs()
                 withJvm()
-                withWasm()
+                withWasmJs()
             }
             withAndroidTarget()
         }
@@ -40,10 +44,8 @@ kotlin {
 
     androidTarget {
         publishLibraryVariants("release")
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_1_8.toString()
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
 
@@ -53,6 +55,7 @@ kotlin {
         browser()
     }
 
+    @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser()
     }
@@ -66,7 +69,7 @@ kotlin {
             implementation(compose.foundation)
         }
         commonTest.dependencies {
-            implementation(kotlin("test"))
+            implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
         }
     }
