@@ -1,13 +1,13 @@
 site_name: 'Compose Shimmer'
 site_description: "Shimmer library for Jetpack Compose"
-site_author: '2023 Compose Shimmer Contributors'
+site_author: '2025 Compose Shimmer Contributors'
 site_url: 'https://valentinilk.github.io/compose-shimmer/'
 remote_branch: gh-pages
 
 repo_name: 'Compose Shimmer'
 repo_url: 'https://github.com/valentinilk/compose-shimmer'
 
-copyright: 'Copyright 2023 Valentin Ilk'
+copyright: 'Copyright 2025 Valentin Ilk'
 
 theme:
   name: material
