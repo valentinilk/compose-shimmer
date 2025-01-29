@@ -10,7 +10,7 @@ The library is available on `mavenCentral()`.
 
 ``` kotlin
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.1")
+  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.2")
 }
 ```
 
@@ -242,7 +242,7 @@ in the terminal.
 ## License
 
 ```
-Copyright 2023 Valentin Ilk
+Copyright 2025 Valentin Ilk
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
