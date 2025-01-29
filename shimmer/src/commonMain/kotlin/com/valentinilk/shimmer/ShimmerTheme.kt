@@ -68,9 +68,9 @@ val defaultShimmerTheme: ShimmerTheme = ShimmerTheme(
     blendMode = BlendMode.DstIn,
     rotation = 15.0f,
     shaderColors = listOf(
-        Color.Unspecified.copy(alpha = 0.25f),
-        Color.Unspecified.copy(alpha = 1.00f),
-        Color.Unspecified.copy(alpha = 0.25f),
+        Color.White.copy(alpha = 0.25f),
+        Color.White.copy(alpha = 1.00f),
+        Color.White.copy(alpha = 0.25f),
     ),
     shaderColorStops = listOf(
         0.0f,
