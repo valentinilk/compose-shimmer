@@ -66,7 +66,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.foundation)
+            api(compose.foundation)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
