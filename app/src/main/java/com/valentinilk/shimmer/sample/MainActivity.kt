@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -42,6 +43,7 @@ fun MainContent() {
     ) {
         val navController = rememberNavController()
         Scaffold(
+            modifier = Modifier.safeDrawingPadding(),
             bottomBar = { BottomNavigationBar(navController) },
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
@@ -56,7 +58,7 @@ fun BottomNavigationBar(navController: NavController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     BottomNavigation {
-        NavItems.values().forEach { navItem ->
+        NavItems.entries.forEach { navItem ->
             BottomNavigationItem(
                 selected = currentRoute == navItem.route,
                 onClick = {
@@ -78,8 +80,8 @@ fun BottomNavigationBar(navController: NavController) {
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = NavItems.values()[0].route) {
-        NavItems.values().forEach { navItem ->
+    NavHost(navController, startDestination = NavItems.entries[0].route) {
+        NavItems.entries.forEach { navItem ->
             composable(navItem.route) {
                 navItem.content()
             }
