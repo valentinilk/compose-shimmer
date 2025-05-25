@@ -9,13 +9,8 @@ plugins {
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.publish) apply false
     alias(libs.plugins.dokka)
-    alias(libs.plugins.ktlint)
 }
 
 tasks.withType<DokkaMultiModuleTask>().configureEach {
     outputDirectory.set(projectDir.resolve("docs/api"))
-}
-
-subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
