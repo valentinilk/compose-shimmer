@@ -307,14 +307,29 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#multiplatform-targets" class="md-nav__link">
     <span class="md-ellipsis">
       Multiplatform Targets
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compose-multiplatform-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compose Multiplatform Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -517,14 +532,29 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#multiplatform-targets" class="md-nav__link">
     <span class="md-ellipsis">
       Multiplatform Targets
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compose-multiplatform-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compose Multiplatform Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -690,16 +720,31 @@
 <h2 id="setup">Setup</h2>
 <p>The library is available on <code>mavenCentral()</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.3.2&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.valentinilk.shimmer:compose-shimmer:1.3.3&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
 </code></pre></div>
-<h2 id="multiplatform-targets">Multiplatform Targets</h2>
-<p>Currently supported KMP targets are:
-- Android
-- iOS
-- JVM (Desktop)
-- JS (Browser)
-- Wasm (WebAssembly)</p>
+<h4 id="multiplatform-targets">Multiplatform Targets</h4>
+<p>Supported CMP targets are: <code>Android</code>, <code>iOS</code>, <code>JVM (Desktop)</code>, <code>JS (Browser)</code> and <code>Wasm (WebAssembly)</code>.</p>
+<h4 id="compose-multiplatform-version">Compose Multiplatform Version</h4>
+<p>In case of compatibility issues, select a library version that is based on the same compose version as your project.</p>
+<table>
+<thead>
+<tr>
+<th>Shimmer Version</th>
+<th>Based on Compose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.3.3</td>
+<td>1.8.1</td>
+</tr>
+<tr>
+<td>1.3.2</td>
+<td>1.7.3</td>
+</tr>
+</tbody>
+</table>
 <h2 id="quick-start">Quick Start</h2>
 <p>Simply apply the <code>shimmer</code> modifier to any UI of your choice. The code below will emit the shimmering UI that can be
 seen in the gif above.
@@ -852,19 +897,19 @@ This can be used to attach the shimmer to a scrollable list for example. Or simp
 <p>Sample apps for different platforms are included in the project.
 To use them, clone the repository into a folder locally.</p>
 <h3 id="android">Android</h3>
-<p>To run the Android app, simply open the project in Android Studio. Select the <code>app</code> configuration and run it.</p>
+<p>To run the Android app, simply open the project in Android Studio. Select the <code>sample</code> configuration and run it.</p>
 <h3 id="ios">iOS</h3>
 <p>The iOS app can be build and launched by using XCode. Open the <code>iosApp</code> folder with XCode as a project. Adapt the
 signing in XCode to match your needs and launch the app on an emulator or iOS device.</p>
 <h3 id="desktop">Desktop</h3>
-<p>The desktop app can be launched by using the <code>demo.desktop</code> configuration in Android Studio. Or run
-<code>./gradlew :shared:run</code> in the terminal.</p>
+<p>The desktop app can be launched by using the <code>sample.desktop</code> configuration in Android Studio. Or run
+<code>./gradlew :sample:run</code> in the terminal.</p>
 <h3 id="browser">Browser</h3>
-<p>To run the sample in the browser, simply use the <code>demo.browser</code> configuration in Android Studio. Or run
-<code>./gradlew :shared:jsBrowserRun</code> in the terminal.</p>
+<p>To run the sample in the browser, simply use the <code>sample.browser</code> configuration in Android Studio. Or run
+<code>./gradlew :sample:jsBrowserDevelopmentRun</code> in the terminal.</p>
 <h3 id="webassembly-wasm">WebAssembly (Wasm)</h3>
-<p>To run the wasm sample use the <code>demo.wasm</code> configuration in Android Studio or run <code>./gradlew :shared:wasmJsBrowserRun</code>
-in the terminal.</p>
+<p>To run the wasm sample use the <code>sample.wasm</code> configuration in Android Studio or run
+<code>./gradlew :sample:wasmJsBrowserDevelopmentRun</code> in the terminal.</p>
 <h2 id="license">License</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Copyright 2025 Valentin Ilk
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
