@@ -1,25 +1,12 @@
 [versions]
-agp = "8.8.0"
+agp = "8.10.0"
 kotlin = "2.1.21"
 compose = "1.8.1"
-targetSdk = "35"
+targetSdk = "36"
 minSdk = "21"
 
 [libraries]
-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2025.05.01" }
-compose-runtime = { module = "androidx.compose.runtime:runtime" }
-compose-ui = { module = "androidx.compose.ui:ui" }
-compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
-compose-foundation = { module = "androidx.compose.foundation:foundation" }
-
-# Extended icon pack can not be found in the BOM currently. Version ref can be removed in the future.
-compose-material = { module = "androidx.compose.material:material", version = "1.8.2" }
-
-# Extended icon pack can not be found in the BOM currently. Version ref can be removed in the future.
-compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version = "1.7.8" }
-compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.9.0" }
-
-material = { module = "com.google.android.material:material", version = "1.12.0" }
+compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.9.0-beta02" }
 
 # Testing libaries
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

@@ -150,7 +150,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :sample:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -299,7 +299,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../sample/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShimmerSample/Info.plist;
@@ -316,7 +316,7 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
-					shared,
+					Sample,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.valentinilk.ShimmerSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -339,7 +339,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../sample/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShimmerSample/Info.plist;
@@ -356,7 +356,7 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
-					shared,
+					Sample,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.valentinilk.ShimmerSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

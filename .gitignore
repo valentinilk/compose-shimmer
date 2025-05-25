@@ -81,4 +81,3 @@ iosApp/Pods/*
 iosApp/ShimmerSample.xcworkspace/*
 iosApp/ShimmerSample.xcodeproj/*
 !iosApp/ShimmerSample.xcodeproj/project.pbxproj
-shared/shared.podspec
