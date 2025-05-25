@@ -10,18 +10,21 @@ The library is available on `mavenCentral()`.
 
 ``` kotlin
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.2")
+  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.3")
 }
 ```
 
-## Multiplatform Targets
+#### Multiplatform Targets
 
-Currently supported KMP targets are:
-- Android
-- iOS
-- JVM (Desktop)
-- JS (Browser)
-- Wasm (WebAssembly)
+Supported CMP targets are: `Android`, `iOS`, `JVM (Desktop)`, `JS (Browser)` and `Wasm (WebAssembly)`.
+
+#### Compose Multiplatform Version
+In case of compatibility issues, select a library version that is based on the same compose version as your project.
+
+| Shimmer Version | Based on Compose |
+|-----------------|------------------|
+| 1.3.3           | 1.8.1            |
+| 1.3.2           | 1.7.3            |
 
 ## Quick Start
 

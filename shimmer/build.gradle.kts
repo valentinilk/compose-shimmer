@@ -79,7 +79,7 @@ mavenPublishing {
     coordinates(
         "com.valentinilk.shimmer",
         "compose-shimmer",
-        "1.3.2",
+        "1.3.3",
     )
     pom {
         name.set("Compose Shimmer")
@@ -109,6 +109,6 @@ mavenPublishing {
             }
         }
     }
-    publishToMavenCentral(SonatypeHost.S01)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 }
