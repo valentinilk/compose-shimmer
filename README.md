@@ -217,7 +217,7 @@ To use them, clone the repository into a folder locally.
 
 ### Android
 
-To run the Android app, simply open the project in Android Studio. Select the `app` configuration and run it.
+To run the Android app, simply open the project in Android Studio. Select the `sample` configuration and run it.
 
 ### iOS
 
@@ -226,18 +226,18 @@ signing in XCode to match your needs and launch the app on an emulator or iOS de
 
 ### Desktop
 
-The desktop app can be launched by using the `demo.desktop` configuration in Android Studio. Or run
-`./gradlew :shared:run` in the terminal.
+The desktop app can be launched by using the `sample.desktop` configuration in Android Studio. Or run
+`./gradlew :sample:run` in the terminal.
 
 ### Browser
 
-To run the sample in the browser, simply use the `demo.browser` configuration in Android Studio. Or run
-`./gradlew :shared:jsBrowserRun` in the terminal.
+To run the sample in the browser, simply use the `sample.browser` configuration in Android Studio. Or run
+`./gradlew :sample:jsBrowserDevelopmentRun` in the terminal.
 
 ### WebAssembly (Wasm)
 
-To run the wasm sample use the `demo.wasm` configuration in Android Studio or run `./gradlew :shared:wasmJsBrowserRun`
-in the terminal.
+To run the wasm sample use the `sample.wasm` configuration in Android Studio or run
+`./gradlew :sample:wasmJsBrowserDevelopmentRun` in the terminal.
 
 ## License
 
