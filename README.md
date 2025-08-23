@@ -157,7 +157,7 @@ its own velocity. This effect can be seen in the following gif:
 That might not always be the desired effect, that's why the library offers a way to set the
 boundaries for the animation:
 
-```
+``` kotlin
 val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.XXX)
 Box(modifier = Modifier.shimmer(shimmerInstance))
 ```
@@ -176,7 +176,7 @@ have the shimmer modifier attached will be affected.
 Be aware that this option might look odd on scrollable content, because the shimmer will be
 positioned relative to the window. So the shimmer will not be moved together with the content.
 
-```
+``` kotlin
 Column {
   val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
   Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
@@ -195,7 +195,7 @@ manually by using the `updateBounds` method on the `Shimmer`.
 This can be used to attach the shimmer to a scrollable list for example. Or simply use the default
 `ShimmerBounds.View` option.
 
-```
+``` kotlin
 val shimmerInstance = rememberShimmer(ShimmerBounds.Custom)
 Column(
   modifier = Modifier
