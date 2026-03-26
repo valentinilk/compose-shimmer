@@ -48,7 +48,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64(),
     ).forEach {
@@ -62,12 +61,12 @@ kotlin {
             dependencies {
                 arrayOf(
                     projects.shimmer,
-                    compose.components.resources,
-                    compose.foundation,
-                    compose.material3,
-                    compose.materialIconsExtended,
-                    compose.runtime,
-                    compose.ui,
+                    libs.compose.components.resources,
+                    libs.compose.foundation,
+                    libs.compose.material3,
+                    libs.compose.material.icons.extended,
+                    libs.compose.runtime,
+                    libs.compose.ui,
                     libs.compose.navigation,
                 ).forEach { dependency ->
                     implementation(dependency)
@@ -77,7 +76,7 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation(compose.desktop.common)
+                implementation(libs.compose.desktop.jvm)
                 implementation(compose.desktop.currentOs)
             }
         }

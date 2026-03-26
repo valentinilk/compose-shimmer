@@ -2,13 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shimmer</title>
+    <style>
+        :root {
+            --app-width: 480;
+            --app-height: 840;
+            --page-bg: #f4f5f7;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            background: var(--page-bg);
+            overflow: hidden;
+        }
+
+        #ComposeRoot {
+            width: calc(var(--app-width) * 1px);
+            height: calc(var(--app-height) * 1px);
+            transform-origin: center center;
+        }
+
+        #ComposeTarget {
+            display: block;
+            width: calc(var(--app-width) * 1px);
+            height: calc(var(--app-height) * 1px);
+        }
+    </style>
     <script src="skiko.js"></script>
 </head>
 <body>
-<div>
-    <canvas height="840" id="ComposeTarget" width="480"></canvas>
+<div id="ComposeRoot">
+    <canvas id="ComposeTarget" height="840" width="480"></canvas>
 </div>
 <script src="sample.js"></script>
+<script>
+    (() => {
+        const appWidth = 480
+        const appHeight = 840
+        const root = document.getElementById("ComposeRoot")
+
+        function updateScale() {
+            const scale = Math.min(
+                window.innerWidth / appWidth,
+                window.innerHeight / appHeight,
+                1,
+            )
+            root.style.transform = `scale(${scale})`
+        }
+
+        window.addEventListener("resize", updateScale)
+        updateScale()
+    })()
+</script>
 </body>
 </html>

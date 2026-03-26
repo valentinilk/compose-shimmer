@@ -60,13 +60,12 @@ kotlin {
         browser()
     }
 
-    iosX64()
     iosArm64()
     iosSimulatorArm64()
 
     sourceSets {
         commonMain.dependencies {
-            api(compose.foundation)
+            api(libs.compose.foundation)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
