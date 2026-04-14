@@ -2,7 +2,7 @@
 
 A library which offers a shimmering effect for Compose.
 
-<img src="https://user-images.githubusercontent.com/1201850/131474443-620d0777-5b42-4914-839d-e6250b083538.gif" width="500" >
+<img src="https://user-images.githubusercontent.com/1201850/131474443-620d0777-5b42-4914-839d-e6250b083538.gif" width="500"  alt="">
 
 ## Setup
 
@@ -24,6 +24,7 @@ In case of compatibility issues, select a library version that is based on the s
 
 | Shimmer Version | Based on Compose |
 |-----------------|------------------|
+| 1.5.0-beta02    | 1.11.0-beta02    |
 | 1.4.0           | 1.10.3           |
 | 1.3.3           | 1.8.1            |
 | 1.3.2           | 1.7.3            |
@@ -31,7 +32,7 @@ In case of compatibility issues, select a library version that is based on the s
 ## Quick Start
 
 Simply apply the `shimmer` modifier to any UI of your choice. The code below will emit the shimmering UI that can be
-seen in the gif above.
+seen in the GIF above.
 
 ```kotlin hl_lines="5"
 @Composable
@@ -93,7 +94,7 @@ Box(
 }
 ```
 
-<img src="https://user-images.githubusercontent.com/1201850/131474508-c572076c-d707-4ba1-9e84-729c1dc06f3f.gif" width="128" height="128">
+<img src="https://user-images.githubusercontent.com/1201850/131474508-c572076c-d707-4ba1-9e84-729c1dc06f3f.gif" width="128" height="128" alt="">
 
 
 If the modifier, however, is applied earlier, the outer `Box`'s `background` modifier is affected by the
@@ -115,7 +116,7 @@ Box(
 }
 ```
 
-<img src="https://user-images.githubusercontent.com/1201850/131474532-ce7d37c5-9af6-4577-82c2-737591f8c0c2.gif" width="128" height="128">
+<img src="https://user-images.githubusercontent.com/1201850/131474532-ce7d37c5-9af6-4577-82c2-737591f8c0c2.gif" width="128" height="128" alt="">
 
 ## Theming
 
@@ -126,12 +127,12 @@ your [customized MaterialTheme](https://developer.android.com/jetpack/compose/de
 There is no need to wrap every single `shimmer` into a `CompositionLocalProvider`.
 
 ```kotlin
-val yourShimmerTheme = defaultShimmerTheme.copy(...)
+val yourShimmerTheme = defaultShimmerTheme.copy(/* Set your desirable values */)
 
 CompositionLocalProvider(
     LocalShimmerTheme provides yourShimmerTheme
 ) {
-    [...]
+    /* content */
 }
 ```
 
@@ -139,15 +140,15 @@ The theme can also be passed as a parameter by using the `rememberShimmer(...)` 
 explained further down below.
 
 The theme itself offers a few simple configurations like the shimmer's `rotation` or `width`.
-Additionally a few unabstracted objects like an `AnimationSpec` or `BlendMode` are exposed. While
-this violates the principales
+Additionally, a few unabstracted objects like an `AnimationSpec` or `BlendMode` are exposed. While
+this violates the principles
 of [information hiding](https://en.wikipedia.org/wiki/Information_hiding), it allows for some great
 customizations.
 
 For further information have a look at documentation in data class itself and have a look at
 the `ThemingSamples` in the sample app.
 
-<img src="https://user-images.githubusercontent.com/1201850/131474645-a854a5ed-c390-4695-b4e4-e73224f2240c.gif" width="250" >
+<img src="https://user-images.githubusercontent.com/1201850/131474645-a854a5ed-c390-4695-b4e4-e73224f2240c.gif" width="250"  alt="">
 
 ## Advanced Usage
 
@@ -156,9 +157,9 @@ in a certain time. That means that the animation will have a different velocity,
 size of the view.
 
 If you apply the modifier to multiple views, each of a different size, then each shimmer will have
-its own velocity. This effect can be seen in the following gif:
+its own velocity. This effect can be seen in the following GIF:
 
-<img src="https://user-images.githubusercontent.com/1201850/131474721-29a57e04-139c-44b6-8721-5fb674706dc8.gif" width="250" >
+<img src="https://user-images.githubusercontent.com/1201850/131474721-29a57e04-139c-44b6-8721-5fb674706dc8.gif" width="250"  alt="">
 
 That might not always be the desired effect, that's why the library offers a way to set the
 boundaries for the animation:
@@ -171,7 +172,7 @@ Box(modifier = Modifier.shimmer(shimmerInstance))
 ### ShimmerBounds.View (default)
 
 The view's height and width will be used as the boundaries for the animation.
-This option was used to create the gifs shown above and should be sufficient for most use cases.
+This option was used to create the GIFs shown above and should be sufficient for most use cases.
 
 ### ShimmerBounds.Window
 
@@ -191,7 +192,7 @@ Column {
 }
 ```
 
-<img src="https://user-images.githubusercontent.com/1201850/131474786-298be2fe-979a-4be4-b4ec-ef3c7d4026fa.gif" width="250" >
+<img src="https://user-images.githubusercontent.com/1201850/131474786-298be2fe-979a-4be4-b4ec-ef3c7d4026fa.gif" width="250"  alt="">
 
 ### ShimmerBounds.Custom
 
@@ -245,7 +246,7 @@ To run the sample in the browser, simply use the `sample.browser` configuration 
 
 ### WebAssembly (Wasm)
 
-To run the wasm sample use the `sample.wasm` configuration in Android Studio or run
+To run the Wasm sample use the `sample.wasm` configuration in Android Studio or run
 `./gradlew :sample:wasmJsBrowserDevelopmentRun` in the terminal.
 
 ## License
