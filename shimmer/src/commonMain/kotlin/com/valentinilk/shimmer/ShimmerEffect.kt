@@ -9,7 +9,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.toRect
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.LinearGradientShader
 import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.PaintingStyle
@@ -80,7 +79,7 @@ internal class ShimmerEffect(
             translate(traversal, 0f, 0f)
         }
 
-        paint.shader = LinearGradientShader(
+        paint.shader = createLinearGradientShader(
             from = transformationMatrix.map(gradientFrom),
             to = transformationMatrix.map(gradientTo),
             colors = shaderColors,
