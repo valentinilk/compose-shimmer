@@ -8,9 +8,9 @@ A library which offers a shimmering effect for Compose.
 
 The library is available on `mavenCentral()`.
 
-``` kotlin
+```kotlin
 dependencies {
-  implementation("com.valentinilk.shimmer:compose-shimmer:1.3.3")
+    implementation("com.valentinilk.shimmer:compose-shimmer:1.3.3")
 }
 ```
 
@@ -19,6 +19,7 @@ dependencies {
 Supported CMP targets are: `Android`, `iOS`, `JVM (Desktop)`, `JS (Browser)` and `Wasm (WebAssembly)`.
 
 #### Compose Multiplatform Version
+
 In case of compatibility issues, select a library version that is based on the same compose version as your project.
 
 | Shimmer Version | Based on Compose |
@@ -30,7 +31,8 @@ In case of compatibility issues, select a library version that is based on the s
 
 Simply apply the `shimmer` modifier to any UI of your choice. The code below will emit the shimmering UI that can be
 seen in the gif above.
-``` kotlin hl_lines="5"
+
+```kotlin hl_lines="5"
 @Composable
 fun ShimmeringPlaceholder() {
     Row(
@@ -66,25 +68,27 @@ fun ShimmeringPlaceholder() {
 
 ## Modifier placement
 
-As usual with [modifiers](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier) the order matters.
+As usual with [modifiers](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier) the order
+matters.
 Every UI component defined **after** the `shimmer` modifier will be affected by the animation. This includes child views
 and other modifiers:
 
 The first example demonstrates that only the inner `Box` is shimmering, even though the `shimmer` has been added to
 the outer `Box`'s modifier stack. The blue `background` is not shimmering, as it's sitting above the `shimmer` modifier.
-``` kotlin hl_lines="5"
+
+```kotlin hl_lines="5"
 Box(
-  modifier = Modifier
-    .size(128.dp)
-    .background(Color.Blue)
-    .shimmer(),
-  contentAlignment = Alignment.Center
-) {
-  Box(
     modifier = Modifier
-      .size(64.dp)
-      .background(Color.Red)
-  )
+        .size(128.dp)
+        .background(Color.Blue)
+        .shimmer(),
+    contentAlignment = Alignment.Center
+) {
+    Box(
+        modifier = Modifier
+            .size(64.dp)
+            .background(Color.Red)
+    )
 }
 ```
 
@@ -93,19 +97,20 @@ Box(
 
 If the modifier, however, is applied earlier, the outer `Box`'s `background` modifier is affected by the
 `shimmer` as well.
-``` kotlin hl_lines="4"
+
+```kotlin hl_lines="4"
 Box(
-  modifier = Modifier
-    .size(128.dp)
-    .shimmer()
-    .background(Color.Blue),
-  contentAlignment = Alignment.Center
-) {
-  Box(
     modifier = Modifier
-      .size(64.dp)
-      .background(Color.Red)
-  )
+        .size(128.dp)
+        .shimmer()
+        .background(Color.Blue),
+    contentAlignment = Alignment.Center
+) {
+    Box(
+        modifier = Modifier
+            .size(64.dp)
+            .background(Color.Red)
+    )
 }
 ```
 
@@ -119,13 +124,13 @@ A good practice would be to integrate the theming into
 your [customized MaterialTheme](https://developer.android.com/jetpack/compose/designsystems/custom).
 There is no need to wrap every single `shimmer` into a `CompositionLocalProvider`.
 
-``` kotlin
+```kotlin
 val yourShimmerTheme = defaultShimmerTheme.copy(...)
 
 CompositionLocalProvider(
-  LocalShimmerTheme provides yourShimmerTheme
+    LocalShimmerTheme provides yourShimmerTheme
 ) {
-  [...]
+    [...]
 }
 ```
 
@@ -157,7 +162,7 @@ its own velocity. This effect can be seen in the following gif:
 That might not always be the desired effect, that's why the library offers a way to set the
 boundaries for the animation:
 
-```
+```kotlin
 val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.XXX)
 Box(modifier = Modifier.shimmer(shimmerInstance))
 ```
@@ -176,12 +181,12 @@ have the shimmer modifier attached will be affected.
 Be aware that this option might look odd on scrollable content, because the shimmer will be
 positioned relative to the window. So the shimmer will not be moved together with the content.
 
-```
+```kotlin
 Column {
-  val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
-  Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
-  Text("Non-shimmering Text")
-  Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
+    val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
+    Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
+    Text("Non-shimmering Text")
+    Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
 }
 ```
 
@@ -195,21 +200,21 @@ manually by using the `updateBounds` method on the `Shimmer`.
 This can be used to attach the shimmer to a scrollable list for example. Or simply use the default
 `ShimmerBounds.View` option.
 
-```
+```kotlin
 val shimmerInstance = rememberShimmer(ShimmerBounds.Custom)
 Column(
-  modifier = Modifier
-    .fillMaxSize()
-    .verticalScroll(rememberScrollState())
-    .onGloballyPositioned { layoutCoordinates ->
-      // Util function included in the library
-      val position = layoutCoordinates.unclippedBoundsInWindow()
-      shimmerInstance.updateBounds(position)
-    },
+    modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())
+        .onGloballyPositioned { layoutCoordinates ->
+            // Util function included in the library
+            val position = layoutCoordinates.unclippedBoundsInWindow()
+            shimmerInstance.updateBounds(position)
+        },
 ) {
-  Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
-  Text("Non-shimmering Text")
-  Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
+    Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
+    Text("Non-shimmering Text")
+    Text("Shimmering Text", modifier = Modifier.shimmer(shimmerInstance))
 }
 ```
 
@@ -245,7 +250,7 @@ To run the wasm sample use the `sample.wasm` configuration in Android Studio or 
 ## License
 
 ```
-Copyright 2025 Valentin Ilk
+Copyright 2026 Valentin Ilk
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
