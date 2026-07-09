@@ -78,7 +78,7 @@ mavenPublishing {
     coordinates(
         "com.valentinilk.shimmer",
         "compose-shimmer",
-        "1.5.0-beta02",
+        "1.5.0",
     )
     pom {
         name.set("Compose Shimmer")
