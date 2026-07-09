@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradientShader
 import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Paint
-import androidx.compose.ui.graphics.PaintingStyle
+import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.withSaveLayer
@@ -51,11 +51,14 @@ internal class ShimmerEffect(
     private val transformationMatrix = Matrix()
     private val gradientFrom = Offset(-shimmerWidth / 2, 0f)
     private val gradientTo = -gradientFrom
-    private val paint = Paint().apply {
-        isAntiAlias = true
-        style = PaintingStyle.Fill
-        blendMode = this@ShimmerEffect.blendMode
-    }
+    private val brush = ShaderBrush(
+        LinearGradientShader(
+            from = gradientFrom,
+            to = gradientTo,
+            colors = shaderColors,
+            colorStops = shaderColorStops,
+        )
+    )
 
     internal suspend fun startAnimation() {
         animatedState.animateTo(
@@ -66,7 +69,7 @@ internal class ShimmerEffect(
 
     private val emptyPaint = Paint()
 
-    fun ContentDrawScope.draw(shimmerArea: ShimmerArea) = with(shimmerArea) {
+    fun ContentDrawScope.draw(shimmerArea: ShimmerArea): Unit = with(shimmerArea) {
         if (shimmerBounds.isEmpty || viewBounds.isEmpty) return
 
         val progress = animatedState.value
@@ -79,13 +82,7 @@ internal class ShimmerEffect(
             translate(-pivotPoint.x, -pivotPoint.y, 0f)
             translate(traversal, 0f, 0f)
         }
-
-        paint.shader = LinearGradientShader(
-            from = transformationMatrix.map(gradientFrom),
-            to = transformationMatrix.map(gradientTo),
-            colors = shaderColors,
-            colorStops = shaderColorStops,
-        )
+        brush.transform = transformationMatrix
 
         val drawArea = size.toRect()
         drawIntoCanvas { canvas ->
@@ -94,7 +91,10 @@ internal class ShimmerEffect(
                 paint = emptyPaint,
             ) {
                 drawContent()
-                canvas.drawRect(drawArea, paint)
+                drawRect(
+                    brush = brush,
+                    blendMode = blendMode,
+                )
             }
         }
     }

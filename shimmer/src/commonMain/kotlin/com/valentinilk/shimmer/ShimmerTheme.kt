@@ -21,8 +21,8 @@ data class ShimmerTheme(
     val animationSpec: AnimationSpec<Float>,
 
     /**
-     * The [BlendMode] used in the shimmer's [androidx.compose.ui.graphics.Paint]. Have a look at
-     * the theming samples to get an idea on how to utilize the blend mode.
+     * The [BlendMode] used to draw the shimmer. Have a look at the theming samples to get an idea
+     * on how to utilize the blend mode.
      *
      * @see ThemingSamples in the sample app.
      */
